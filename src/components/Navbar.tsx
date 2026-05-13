@@ -15,6 +15,7 @@ export function Navbar() {
   const pathname = useRouterState({ select: (s) => s.location.pathname })
   const isHome = pathname === '/'
   const transparentHero = isHome && !isScrolled
+  const closeMobileMenu = () => setIsMobileMenuOpen(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,10 +24,6 @@ export function Navbar() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  useEffect(() => {
-    setIsMobileMenuOpen(false)
-  }, [pathname])
 
   useEffect(() => {
     if (!isMobileMenuOpen) return
@@ -127,6 +124,7 @@ export function Navbar() {
             <Link
               key={link.to}
               to={link.to}
+              onClick={closeMobileMenu}
               className="block px-4 py-3 rounded-xl text-gray-900 font-medium hover:bg-gray-100"
               activeProps={{ className: 'bg-gray-100' }}
             >
@@ -135,6 +133,7 @@ export function Navbar() {
           ))}
           <a
             href="mailto:hello@lsd.capital"
+            onClick={closeMobileMenu}
             className="flex items-center justify-center space-x-2 bg-gray-900 text-white w-full px-6 py-3 rounded-xl hover:bg-gray-800 transition-colors"
           >
             <Mail className="w-4 h-4" />

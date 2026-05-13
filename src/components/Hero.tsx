@@ -1,14 +1,7 @@
-import { useEffect, useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { Mail, ArrowRight, ChevronDown } from 'lucide-react'
 
 export function Hero() {
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    setIsVisible(true)
-  }, [])
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#111111] text-gray-100 pt-20">
       <div className="absolute inset-0">
@@ -19,23 +12,23 @@ export function Hero() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
         <div className="max-w-4xl mx-auto text-center space-y-12">
-          <div className={`inline-flex items-center space-x-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 backdrop-blur-sm transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 backdrop-blur-sm animate-fade-up">
             <span className="flex h-2 w-2 rounded-full bg-green-500"></span>
             <span className="text-sm font-medium text-gray-300">Investing in the future</span>
           </div>
 
-          <h1 className={`text-5xl md:text-7xl font-bold tracking-tight leading-tight transform transition-all duration-1000 delay-100 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight animate-fade-up [animation-delay:100ms]">
             Heart based leaders <br />
             <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">
               solving problems
             </span>
           </h1>
 
-          <p className={`text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed transform transition-all duration-1000 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed animate-fade-up [animation-delay:200ms]">
             We partner with tech-focused angel and seed startups, investing with purpose, passion, and a commitment to positive impact.
           </p>
 
-          <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up [animation-delay:300ms]">
             <a
               href="mailto:hello@lsd.capital"
               className="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-black rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105"
