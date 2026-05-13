@@ -1,11 +1,25 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'vite'
+import { fileURLToPath } from 'node:url'
+import { cloudflare } from '@cloudflare/vite-plugin'
+import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import viteReact from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  optimizeDeps: {
-    exclude: ['lucide-react'],
+  resolve: {
+    alias: {
+      '~': fileURLToPath(new URL('./src', import.meta.url)),
+    },
   },
-});
+  plugins: [
+    cloudflare({ viteEnvironment: { name: 'ssr' } }),
+    tanstackStart({
+      prerender: {
+        enabled: true,
+        crawlLinks: true,
+      },
+    }),
+    viteReact(),
+    tailwindcss(),
+  ],
+})
