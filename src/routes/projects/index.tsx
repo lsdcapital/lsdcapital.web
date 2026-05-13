@@ -9,7 +9,7 @@ export const Route = createFileRoute('/projects/')({
       {
         name: 'description',
         content:
-          'Things we are building. LinkiDink — a word connection puzzle game for iOS and Android.',
+          'Things we are building — LinkiDink, a word connection puzzle game, and itwyit, a private space for two people to compare notes.',
       },
     ],
   }),
@@ -55,19 +55,21 @@ function ProjectsPage() {
                 </p>
               </div>
 
-              <div className="col-span-12 md:col-span-3 md:order-last">
-                <div className="aspect-square w-32 md:w-full md:max-w-[12rem] overflow-hidden border border-rule bg-ink/[0.03]">
-                  <img
-                    src={project.logo}
-                    alt={`${project.name} logo`}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover"
-                  />
+              {project.logo && (
+                <div className="col-span-12 md:col-span-3 md:order-last">
+                  <div className="aspect-square w-32 md:w-full md:max-w-[12rem] overflow-hidden border border-rule bg-ink/[0.03]">
+                    <img
+                      src={project.logo}
+                      alt={`${project.name} logo`}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
-              </div>
+              )}
 
-              <div className="col-span-12 md:col-span-7 max-w-2xl">
+              <div className={`col-span-12 max-w-2xl ${project.logo ? 'md:col-span-7' : 'md:col-span-10'}`}>
                 <h2 className="font-display text-5xl md:text-6xl text-ink leading-[0.95] tracking-[-0.01em]">
                   {project.name}
                 </h2>
@@ -75,7 +77,7 @@ function ProjectsPage() {
                   {project.tagline}.
                 </p>
                 <p className="mt-8 leading-relaxed text-ink drop-cap">
-                  A daily word connection puzzle for iOS and Android — link words by their hidden meanings, climb a small daily ladder, share with friends. Built quietly in spare hours, shipped without fanfare. It's an experiment in what a calm game on your phone can feel like.
+                  {project.body}
                 </p>
                 <Link
                   to={project.internalUrl}
