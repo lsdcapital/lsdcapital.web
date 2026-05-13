@@ -28,7 +28,15 @@ export const Route = createRootRoute({
       { name: 'twitter:title', content: SITE_TITLE },
       { name: 'twitter:description', content: SITE_DESCRIPTION },
     ],
-    links: [{ rel: 'stylesheet', href: appCss }],
+    links: [
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: '' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap',
+      },
+      { rel: 'stylesheet', href: appCss },
+    ],
   }),
   component: RootComponent,
 })
@@ -36,9 +44,9 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <RootDocument>
-      <div className="bg-[#111111] text-gray-100 font-sans antialiased min-h-screen flex flex-col">
+      <div className="bg-paper text-ink font-sans antialiased min-h-screen flex flex-col relative">
         <Navbar />
-        <main className="flex-1">
+        <main className="flex-1 relative z-10">
           <Outlet />
         </main>
         <Footer />
@@ -53,7 +61,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       <head>
         <HeadContent />
       </head>
-      <body className="bg-[#111111]">
+      <body className="bg-paper">
         {children}
         <Scripts />
       </body>

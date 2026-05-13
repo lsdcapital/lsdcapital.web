@@ -1,27 +1,23 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { ArrowUpRight, Briefcase, Smartphone, Heart } from 'lucide-react'
 import { Hero } from '~/components/Hero'
 
 export const Route = createFileRoute('/')({ component: Home })
 
-const cards = [
+const sections = [
   {
     to: '/portfolio',
-    icon: Briefcase,
     title: 'Portfolio',
     description:
       'Companies we invest in — tech-focused angel and seed-stage startups led by founders we believe in.',
   },
   {
     to: '/projects',
-    icon: Smartphone,
     title: 'Projects',
     description:
       "Things we're building ourselves. Starting with LinkiDink, a word connection puzzle game for iOS and Android.",
   },
   {
     to: '/community',
-    icon: Heart,
     title: 'Community',
     description:
       'Initiatives we participate in beyond capital — like our Afrikaburn theme camp and other projects we care about.',
@@ -32,35 +28,45 @@ function Home() {
   return (
     <>
       <Hero />
-      <section className="bg-[#0a0a0a] py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-16">
-            <h2 className="text-4xl font-bold text-gray-100 mb-4">What we do</h2>
-            <p className="text-xl text-gray-400">
-              Three things, all flowing from the same idea: backing people and projects with heart.
+      <section className="border-b border-rule">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-24 md:py-32">
+          <div className="grid grid-cols-12 gap-x-6 gap-y-12">
+            <p className="col-span-12 md:col-span-2 text-[10px] uppercase tracking-[0.24em] text-ink-muted">
+              § Sections
+              <br />
+              <span className="text-ink-muted/70">Three</span>
+            </p>
+            <p className="col-span-12 md:col-span-10 font-display text-2xl md:text-3xl leading-snug max-w-3xl drop-cap">
+              Three things, all flowing from the same idea — backing people and projects with heart, capital, and time.
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {cards.map((card) => {
-              const Icon = card.icon
-              return (
+
+          <ol className="mt-20 border-t border-ink">
+            {sections.map((section, i) => (
+              <li key={section.to} className="border-b border-rule">
                 <Link
-                  key={card.to}
-                  to={card.to}
-                  className="group relative bg-[#1a1a1a] border border-gray-800 rounded-2xl p-8 hover:border-gray-700 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                  to={section.to}
+                  className="grid grid-cols-12 gap-x-6 gap-y-4 py-10 md:py-14 group items-baseline transition-colors hover:bg-ink/[0.025]"
                 >
-                  <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ArrowUpRight className="w-5 h-5 text-gray-400" />
-                  </div>
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mb-6">
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-100 mb-3">{card.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{card.description}</p>
+                  <span className="col-span-2 md:col-span-2 font-display text-3xl md:text-5xl text-ink-muted tabular-nums leading-none">
+                    0{i + 1}
+                  </span>
+                  <h3 className="col-span-10 md:col-span-3 font-display text-3xl md:text-4xl text-ink leading-tight">
+                    {section.title}
+                  </h3>
+                  <p className="col-span-12 md:col-span-6 text-ink-muted leading-relaxed max-w-prose md:pl-2">
+                    {section.description}
+                  </p>
+                  <span
+                    aria-hidden="true"
+                    className="col-span-12 md:col-span-1 text-right text-ink-muted group-hover:text-accent transition-colors text-lg"
+                  >
+                    →
+                  </span>
                 </Link>
-              )
-            })}
-          </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
     </>

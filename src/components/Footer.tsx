@@ -1,72 +1,72 @@
 import { Link } from '@tanstack/react-router'
-import { Heart, Mail } from 'lucide-react'
+import { HeartMark } from '~/components/HeartMark'
 
 export function Footer() {
   return (
-    <footer className="bg-[#111111] text-gray-200 border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-4 gap-12">
-          <div className="md:col-span-2 space-y-6">
-            <Link to="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
-                <Heart className="w-5 h-5 text-white" fill="currentColor" />
-              </div>
-              <span className="text-2xl font-bold">LSD Capital</span>
-            </Link>
-            <p className="text-gray-400 max-w-md">
-              Investing with heart, leading with purpose. Building the future of technology and innovation across Africa and beyond.
-            </p>
-            <a
-              href="mailto:hello@lsd.capital"
-              className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
-            >
-              <Mail className="w-4 h-4" />
-              hello@lsd.capital
-            </a>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold text-gray-100 uppercase tracking-wider mb-4">
-              Site
-            </h3>
-            <ul className="space-y-3 text-gray-400">
-              <li>
-                <Link to="/portfolio" className="hover:text-gray-100 transition-colors">
-                  Portfolio
-                </Link>
-              </li>
-              <li>
-                <Link to="/projects" className="hover:text-gray-100 transition-colors">
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link to="/community" className="hover:text-gray-100 transition-colors">
-                  Community
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold text-gray-100 uppercase tracking-wider mb-4">
-              Where
-            </h3>
-            <ul className="space-y-3 text-gray-400">
-              <li>South Africa</li>
-              <li>Seychelles</li>
-            </ul>
-          </div>
+    <footer className="border-t border-rule bg-paper relative z-10">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8 py-16 md:py-24 grid grid-cols-12 gap-x-6 gap-y-12">
+        <div className="col-span-12 md:col-span-5">
+          <Link to="/" className="flex items-center gap-2.5 group">
+            <HeartMark className="w-4 h-4 text-accent transition-colors group-hover:text-ink" />
+            <span className="font-display text-2xl text-ink">LSD Capital</span>
+          </Link>
+          <p className="font-display italic text-ink-muted mt-5 max-w-sm text-lg leading-snug">
+            Heart-led investments, leading with purpose. Building the future of technology and innovation across Africa and beyond.
+          </p>
+          <a
+            href="mailto:hello@lsd.capital"
+            className="inline-block mt-8 text-[11px] uppercase tracking-[0.22em] text-ink border-b border-ink pb-1 hover:text-accent hover:border-accent transition-colors"
+          >
+            hello@lsd.capital →
+          </a>
         </div>
 
-        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <p className="text-gray-500 text-sm">
-            &copy; {new Date().getFullYear()} LSD Capital. All rights reserved.
-          </p>
-          <div className="flex items-center space-x-3 text-sm text-gray-500">
-            <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-            <span>Heart led investments</span>
-          </div>
+        <nav className="col-span-6 md:col-span-3">
+          <h4 className="text-[10px] uppercase tracking-[0.24em] text-ink-muted mb-5">
+            Sections
+          </h4>
+          <ul className="space-y-2.5">
+            <li>
+              <Link to="/portfolio" className="font-display text-lg text-ink hover:text-accent transition-colors">
+                Portfolio
+              </Link>
+            </li>
+            <li>
+              <Link to="/projects" className="font-display text-lg text-ink hover:text-accent transition-colors">
+                Projects
+              </Link>
+            </li>
+            <li>
+              <Link to="/community" className="font-display text-lg text-ink hover:text-accent transition-colors">
+                Community
+              </Link>
+            </li>
+          </ul>
+        </nav>
+
+        <div className="col-span-6 md:col-span-4">
+          <h4 className="text-[10px] uppercase tracking-[0.24em] text-ink-muted mb-5">
+            Based in
+          </h4>
+          <ul className="space-y-2.5 font-display text-lg text-ink">
+            <li>
+              South Africa <span className="text-ink-muted text-sm uppercase tracking-widest ml-1">ZA</span>
+            </li>
+            <li>
+              Seychelles <span className="text-ink-muted text-sm uppercase tracking-widest ml-1">SC</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="border-t border-rule">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-6 flex flex-col md:flex-row justify-between items-start md:items-baseline gap-3 text-[10px] uppercase tracking-[0.22em] text-ink-muted">
+          <span>
+            © {new Date().getFullYear()} LSD Capital · Vol. 01 / 2026
+          </span>
+          <span className="font-display italic normal-case tracking-normal text-sm text-ink">
+            Heart led investments.
+          </span>
         </div>
       </div>
     </footer>

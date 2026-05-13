@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { ArrowUpRight } from 'lucide-react'
 import { community } from '~/data/community'
 
 export const Route = createFileRoute('/community')({
@@ -19,38 +18,60 @@ export const Route = createFileRoute('/community')({
 function CommunityPage() {
   return (
     <>
-      <section className="pt-32 pb-12 bg-[#111111]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm font-medium text-green-400 mb-4 uppercase tracking-wider">
-            Community
-          </p>
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-100 mb-6 tracking-tight">
-            Where we show up
-          </h1>
-          <p className="text-xl text-gray-400 max-w-2xl">
-            Initiatives and projects we participate in beyond capital — places where we show up with time, energy, and heart.
-          </p>
-        </div>
-      </section>
-      <section className="py-24 bg-[#0a0a0a]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {community.map((item) => (
-              <a
-                key={item.url}
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative bg-[#1a1a1a] border border-gray-800 rounded-2xl p-8 hover:border-gray-700 hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <ArrowUpRight className="w-5 h-5 text-gray-400" />
-                </div>
-                <h2 className="text-2xl font-bold text-gray-100 mb-3">{item.name}</h2>
-                <p className="text-gray-400 leading-relaxed">{item.description}</p>
-              </a>
-            ))}
+      <header className="relative border-b border-rule overflow-hidden">
+        <span
+          aria-hidden="true"
+          className="absolute top-0 left-0 right-0 h-px bg-ink origin-left animate-[rule-draw_700ms_ease-out_forwards]"
+        />
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 pt-20 pb-20 md:pt-32 md:pb-28">
+          <div className="grid grid-cols-12 gap-x-6 gap-y-8">
+            <p className="col-span-12 md:col-span-2 text-[10px] uppercase tracking-[0.24em] text-ink-muted">
+              § Community
+              <br />
+              <span className="text-ink-muted/70 tabular-nums">{community.length} initiative{community.length === 1 ? '' : 's'}</span>
+            </p>
+            <h1 className="col-span-12 md:col-span-10 font-display font-medium text-ink leading-[0.95] tracking-[-0.02em] text-5xl md:text-7xl lg:text-8xl">
+              Where we <em className="italic font-normal text-accent">show up.</em>
+            </h1>
+            <p className="col-span-12 md:col-start-3 md:col-span-7 font-display italic text-xl md:text-2xl text-ink-muted leading-snug">
+              Initiatives and projects we participate in beyond capital — places where we show up with time, energy, and heart.
+            </p>
           </div>
+        </div>
+      </header>
+
+      <section>
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          {community.map((item, i) => (
+            <article
+              key={item.url}
+              className="grid grid-cols-12 gap-x-6 gap-y-6 py-16 md:py-24 border-b border-rule"
+            >
+              <p className="col-span-12 md:col-span-2 text-[10px] uppercase tracking-[0.24em] text-ink-muted">
+                No. {String(i + 1).padStart(2, '0')}
+                <br />
+                <span className="text-ink-muted/70">Initiative</span>
+              </p>
+
+              <div className="col-span-12 md:col-span-10 max-w-3xl">
+                <h2 className="font-display text-5xl md:text-6xl text-ink leading-[0.95] tracking-[-0.01em]">
+                  {item.name}
+                </h2>
+                <p className="mt-8 leading-relaxed text-ink drop-cap text-lg">
+                  {item.description}
+                </p>
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-baseline gap-2 mt-10 text-[11px] uppercase tracking-[0.24em] text-ink border-b border-ink pb-1 hover:text-accent hover:border-accent transition-colors"
+                >
+                  <span>Visit</span>
+                  <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">↗</span>
+                </a>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
     </>

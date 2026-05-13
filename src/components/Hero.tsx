@@ -1,54 +1,54 @@
-import { Link } from '@tanstack/react-router'
-import { Mail, ArrowRight, ChevronDown } from 'lucide-react'
-
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#111111] text-gray-100 pt-20">
-      <div className="absolute inset-0">
-        <div className="absolute top-0 -left-4 w-96 h-96 bg-green-500/20 rounded-full mix-blend-screen filter blur-[128px] animate-pulse"></div>
-        <div className="absolute bottom-0 -right-4 w-96 h-96 bg-emerald-500/10 rounded-full mix-blend-screen filter blur-[128px] animate-pulse delay-1000"></div>
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div className="max-w-4xl mx-auto text-center space-y-12">
-          <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 backdrop-blur-sm animate-fade-up">
-            <span className="flex h-2 w-2 rounded-full bg-green-500"></span>
-            <span className="text-sm font-medium text-gray-300">Investing in the future</span>
+    <section className="relative border-b border-rule overflow-hidden">
+      <span
+        aria-hidden="true"
+        className="absolute top-0 left-0 right-0 h-px bg-ink origin-left animate-[rule-draw_700ms_ease-out_forwards]"
+      />
+      <div className="max-w-6xl mx-auto px-6 lg:px-8 pt-20 pb-24 md:pt-32 md:pb-40 lg:pt-40 lg:pb-48">
+        <div className="grid grid-cols-12 gap-x-6 gap-y-10 md:gap-y-14">
+          <div className="col-span-12 md:col-span-2 flex md:block">
+            <p className="text-[10px] uppercase tracking-[0.24em] text-ink-muted leading-relaxed">
+              Vol. 01
+              <br className="hidden md:block" />
+              <span className="md:hidden"> · </span>
+              MMXXVI
+              <br className="hidden md:block" />
+              <span className="md:hidden"> · </span>
+              <span className="md:block mt-3 md:mt-3">Cape Town</span>
+              <span className="md:hidden"> · </span>
+              <span className="md:block">Mahé · ZA / SC</span>
+            </p>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight animate-fade-up [animation-delay:100ms]">
-            Heart based leaders <br />
-            <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent">
-              solving problems
-            </span>
+          <h1 className="col-span-12 md:col-span-10 font-display font-medium text-ink leading-[0.92] tracking-[-0.02em] text-[3.25rem] sm:text-7xl md:text-[7.5rem] lg:text-[9rem] xl:text-[10rem]">
+            Heart-led
+            <br />
+            leaders,{' '}
+            <em className="italic font-normal text-accent">
+              solving
+              <br />
+              real problems.
+            </em>
           </h1>
 
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed animate-fade-up [animation-delay:200ms]">
+          <p className="col-span-12 md:col-start-3 md:col-span-7 font-display italic text-xl md:text-2xl text-ink-muted leading-snug -mt-2">
             We partner with tech-focused angel and seed startups, investing with purpose, passion, and a commitment to positive impact.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up [animation-delay:300ms]">
+          <div className="col-span-12 md:col-start-3 md:col-span-9 flex flex-wrap items-baseline gap-x-10 gap-y-4">
             <a
               href="mailto:hello@lsd.capital"
-              className="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-black rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105"
+              className="group inline-flex items-baseline gap-2 text-[11px] uppercase tracking-[0.24em] text-ink border-b border-ink pb-1 hover:text-accent hover:border-accent transition-colors"
             >
-              <Mail className="w-5 h-5 mr-2" />
-              Start a Conversation
+              <span>Start a conversation</span>
+              <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
             </a>
-            <Link
-              to="/portfolio"
-              className="group inline-flex items-center justify-center px-8 py-4 bg-white/5 text-white border border-white/10 rounded-full font-semibold hover:bg-white/10 transition-all duration-300"
-            >
-              View Portfolio
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            <span className="text-[10px] uppercase tracking-[0.22em] text-ink-muted">
+              or write — hello@lsd.capital
+            </span>
           </div>
         </div>
-      </div>
-
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-500">
-        <ChevronDown className="w-6 h-6" />
       </div>
     </section>
   )
