@@ -97,13 +97,13 @@ function LinkidinkPage() {
                 Out now in <em className="italic text-accent">beta.</em>
               </h2>
               <p className="font-display italic text-xl text-ink-muted mt-4 max-w-xl">
-                Quietly shipped to TestFlight and Google Play internal testing.
+                Quietly shipped to TestFlight and Google Play.
               </p>
 
               <ul className="mt-10 border-t border-ink">
                 <li className="border-b border-rule">
                   <a
-                    href="https://testflight.apple.com/join/9cAsk5zA"
+                    href="https://testflight.apple.com/join/JH1EMcxN"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group grid grid-cols-12 gap-x-4 items-baseline py-6 transition-colors hover:bg-ink/[0.025]"
@@ -127,7 +127,7 @@ function LinkidinkPage() {
                 </li>
                 <li className="border-b border-rule">
                   <a
-                    href="https://play.google.com/apps/internaltest/4701281913755935060"
+                    href="https://play.google.com/store/apps/details?id=capital.lsd.linkidink"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group grid grid-cols-12 gap-x-4 items-baseline py-6 transition-colors hover:bg-ink/[0.025]"
