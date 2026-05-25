@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "lsdcapital-web",
+  "account_id": "28e7c1fba549ce3a5b6828c5f600fd10",
   "compatibility_date": "2026-05-13",
   "compatibility_flags": ["nodejs_compat"],
   "main": "@tanstack/react-start/server-entry",
