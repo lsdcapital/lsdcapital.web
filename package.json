@@ -14,18 +14,18 @@
     "update": "pnpm up -i -L"
   },
   "dependencies": {
-    "@tanstack/react-router": "^1.170.3",
-    "@tanstack/react-start": "^1.168.5",
+    "@tanstack/react-router": "^1.170.8",
+    "@tanstack/react-start": "^1.168.11",
     "lucide-react": "^1.16.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.37.1",
+    "@cloudflare/vite-plugin": "^1.38.0",
     "@eslint/js": "^10.0.1",
     "@tailwindcss/vite": "^4.3.0",
     "@tanstack/react-router-devtools": "^1.167.0",
-    "@types/react": "^19.2.14",
+    "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.2",
     "eslint": "^10.4.0",
@@ -34,9 +34,9 @@
     "globals": "^17.6.0",
     "tailwindcss": "^4.3.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.59.3",
-    "vite": "^8.0.13",
-    "wrangler": "^4.92.0"
+    "typescript-eslint": "^8.59.4",
+    "vite": "^8.0.14",
+    "wrangler": "^4.94.0"
   },
-  "packageManager": "pnpm@11.1.2+sha512.415a1cc25974731e75455c1468371be74c5aa5fb7621b50d4056d222451609f11412f23fd602e6169f1e060466641f798597e1be961a10688836a67b16569499"
+  "packageManager": "pnpm@11.3.0+sha512.2c403d6594527287672b1f7056343a1f7c3634036a67ffabfcc2b3d7595d843768f8787148d1b57cf7956c90606bbd192857c363af19e96d2d0ec9ec5741d215"
 }
