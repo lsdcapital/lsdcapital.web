@@ -127,7 +127,7 @@ function LinkidinkPage() {
                 </li>
                 <li className="border-b border-rule">
                   <a
-                    href="https://play.google.com/store/apps/details?id=capital.lsd.linkidink"
+                    href="https://play.google.com/apps/testing/capital.lsd.linkidink"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group grid grid-cols-12 gap-x-4 items-baseline py-6 transition-colors hover:bg-ink/[0.025]"
