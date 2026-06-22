@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router'
 import { HeartMark } from '~/components/HeartMark'
 
 const links = [
-  { to: '/portfolio', label: 'Portfolio' },
+  { to: '/portfolio', label: 'Investments' },
   { to: '/projects', label: 'Projects' },
   { to: '/community', label: 'Community' },
 ] as const

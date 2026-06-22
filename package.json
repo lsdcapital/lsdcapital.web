@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": "24.17.0"
+  },
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && tsc --noEmit",
@@ -14,29 +17,29 @@
     "update": "pnpm up -i -L"
   },
   "dependencies": {
-    "@tanstack/react-router": "^1.170.8",
-    "@tanstack/react-start": "^1.168.11",
-    "lucide-react": "^1.16.0",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "@tanstack/react-router": "^1.170.16",
+    "@tanstack/react-start": "^1.168.26",
+    "lucide-react": "^1.21.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.38.0",
+    "@cloudflare/vite-plugin": "^1.42.1",
     "@eslint/js": "^10.0.1",
-    "@tailwindcss/vite": "^4.3.0",
+    "@tailwindcss/vite": "^4.3.1",
     "@tanstack/react-router-devtools": "^1.167.0",
-    "@types/react": "^19.2.15",
+    "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.2",
-    "eslint": "^10.4.0",
+    "eslint": "^10.5.0",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
+    "eslint-plugin-react-refresh": "^0.5.3",
     "globals": "^17.6.0",
-    "tailwindcss": "^4.3.0",
+    "tailwindcss": "^4.3.1",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.59.4",
-    "vite": "^8.0.14",
-    "wrangler": "^4.94.0"
+    "typescript-eslint": "^8.61.1",
+    "vite": "^8.0.16",
+    "wrangler": "^4.103.0"
   },
-  "packageManager": "pnpm@11.3.0+sha512.2c403d6594527287672b1f7056343a1f7c3634036a67ffabfcc2b3d7595d843768f8787148d1b57cf7956c90606bbd192857c363af19e96d2d0ec9ec5741d215"
+  "packageManager": "pnpm@11.8.0+sha512.c1f5e7c4cb241c8f174b743851d82f42b802324afc8b0f116b96adb15aa06664948dde36960a3ba1079ba5b4b29dd0140135b94b5b5f5263592249d68e555f26"
 }

@@ -6,9 +6,9 @@ export const Route = createFileRoute('/')({ component: Home })
 const sections = [
   {
     to: '/portfolio',
-    title: 'Portfolio',
+    title: 'Investments',
     description:
-      'Companies we invest in — tech-focused angel and seed-stage startups led by founders we believe in.',
+      'Companies and founders we have backed — tech-focused angel and seed-stage investments across Africa and beyond.',
   },
   {
     to: '/projects',

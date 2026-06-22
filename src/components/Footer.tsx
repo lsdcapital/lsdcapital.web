@@ -28,7 +28,7 @@ export function Footer() {
           <ul className="space-y-2.5">
             <li>
               <Link to="/portfolio" className="font-display text-lg text-ink hover:text-accent transition-colors">
-                Portfolio
+                Investments
               </Link>
             </li>
             <li>
