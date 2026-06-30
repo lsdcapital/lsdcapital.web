@@ -14,11 +14,7 @@ export const Route = createFileRoute('/projects/linkidink/privacy')({
   }),
 })
 
-// TODO: This is a starter privacy policy. Review every section against what
-// LinkiDink actually does and adjust before submitting to the Play Store.
-// Required Play Store fields: data collection, sharing, security, deletion request flow.
-
-const LAST_UPDATED = '13 May 2026'
+const LAST_UPDATED = '30 June 2026'
 
 const sections: { title: string; body: React.ReactNode }[] = [
   {
@@ -37,19 +33,25 @@ const sections: { title: string; body: React.ReactNode }[] = [
     title: 'Data we collect',
     body: (
       <>
-        <p>LinkiDink is designed to collect as little personal data as possible.</p>
+        <p>
+          LinkiDink is designed to be played anonymously. We do not ask for your name, email address, phone number, or any account credentials.
+        </p>
         <ul className="mt-4 space-y-3 border-l border-rule pl-5">
           <li>
-            <strong className="font-display font-medium text-ink">Game progress and settings —</strong>{' '}
-            your current level, hint usage, completion times, and preferences (such as your selected learning language) are saved so you can resume play.
-          </li>
-          <li>
             <strong className="font-display font-medium text-ink">Anonymous device identifier —</strong>{' '}
-            a randomly generated ID stored on your device, used to associate your saved progress with the app installation. This is not linked to your name, email, or other personal data.
+            a randomly generated ID stored on your device, used to save your progress and associate it with the app installation. This is not linked to your name, email, or other personal data.
           </li>
           <li>
-            <strong className="font-display font-medium text-ink">Crash and error diagnostics —</strong>{' '}
-            basic technical information (operating system version, device model, app version) is recorded when the app crashes, to help us fix bugs.
+            <strong className="font-display font-medium text-ink">Display name (nickname) —</strong>{' '}
+            a nickname that you choose. You can change it at any time.
+          </li>
+          <li>
+            <strong className="font-display font-medium text-ink">Game progress —</strong>{' '}
+            such as your current level and hint coins, saved so you can resume play.
+          </li>
+          <li>
+            <strong className="font-display font-medium text-ink">Optional feedback —</strong>{' '}
+            when you tap "report" on a puzzle, we record that report along with any text comment you choose to add.
           </li>
         </ul>
       </>
@@ -62,11 +64,11 @@ const sections: { title: string; body: React.ReactNode }[] = [
         <p>We use the data described above only to:</p>
         <ul className="mt-4 space-y-2 border-l border-rule pl-5">
           <li>Provide the game and save your progress between sessions.</li>
-          <li>Diagnose crashes and improve stability.</li>
+          <li>Review reported puzzles and prove puzzle quality.</li>
           <li>Improve gameplay and balance difficulty across the level pool.</li>
         </ul>
         <p className="mt-5">
-          We do not sell your data. We do not use your data for advertising. We do not share your data with third parties except as described in the next section.
+          We do <strong className="font-display font-medium text-ink">not</strong> sell your data, use it for advertising, or track you across other apps or websites. The app contains no third-party advertising or analytics trackers. We do not share your data with third parties except as described in the next section.
         </p>
       </>
     ),
@@ -92,7 +94,7 @@ const sections: { title: string; body: React.ReactNode }[] = [
           </li>
           <li>
             <strong className="font-display font-medium text-ink">Convex —</strong>{' '}
-            used to store game progress in the cloud so you can resume across devices. Convex processes only the anonymous identifier and game state described above. See{' '}
+            used as our backend to store your anonymous identifier, nickname, game progress, and any report feedback, solely to run the game and prove puzzle quality. See{' '}
             <a
               href="https://www.convex.dev/legal/privacy"
               target="_blank"
@@ -123,7 +125,7 @@ const sections: { title: string; body: React.ReactNode }[] = [
     title: 'Data retention and deletion',
     body: (
       <p>
-        Game progress is retained for as long as the app is installed on your device. To delete your data, uninstall the app — local data is removed automatically. To delete cloud-synced progress associated with your anonymous identifier, email{' '}
+        Your progress, nickname, and any feedback are retained for as long as the app is installed on your device. To delete your data, uninstall the app — local data is removed automatically. To delete cloud-stored data associated with your anonymous identifier, email{' '}
         <a href="mailto:hello@lsd.capital" className="text-accent border-b border-accent/40 hover:border-accent">
           hello@lsd.capital
         </a>{' '}
