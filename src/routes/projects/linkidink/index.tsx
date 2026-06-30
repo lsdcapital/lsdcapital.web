@@ -23,15 +23,11 @@ export const Route = createFileRoute('/projects/linkidink/')({
 function LinkidinkPage() {
   return (
     <>
-      <header className="relative border-b border-rule overflow-hidden">
-        <span
-          aria-hidden="true"
-          className="absolute top-0 left-0 right-0 h-px bg-ink origin-left animate-[rule-draw_700ms_ease-out_forwards]"
-        />
+      <header className="border-b border-rule">
         <div className="max-w-6xl mx-auto px-6 lg:px-8 pt-20 pb-20 md:pt-32 md:pb-28">
           <div className="grid grid-cols-12 gap-x-6 gap-y-8">
             <p className="col-span-12 md:col-span-2 text-[10px] uppercase tracking-[0.24em] text-ink-muted">
-              § Project
+              Project
               <br />
               <span className="text-ink-muted/70">LinkiDink</span>
               <br />
@@ -68,12 +64,12 @@ function LinkidinkPage() {
         <div className="max-w-6xl mx-auto px-6 lg:px-8 py-20 md:py-28">
           <div className="grid grid-cols-12 gap-x-6 gap-y-10">
             <p className="col-span-12 md:col-span-2 text-[10px] uppercase tracking-[0.24em] text-ink-muted">
-              § Chapter I
+              Chapter I
               <br />
               <span className="text-ink-muted/70">How it plays</span>
             </p>
             <div className="col-span-12 md:col-span-10 grid md:grid-cols-2 gap-x-10 gap-y-8 max-w-4xl">
-              <p className="text-ink leading-relaxed text-lg drop-cap">
+              <p className="text-ink leading-relaxed text-lg">
                 Each puzzle is a grid of shuffled words hiding four categories. Drag and swap tiles until each row contains words that belong together. When a row matches, it locks and collapses into a single icon tile.
               </p>
               <p className="text-ink leading-relaxed text-lg">
@@ -88,7 +84,7 @@ function LinkidinkPage() {
         <div className="max-w-6xl mx-auto px-6 lg:px-8 py-20 md:py-28">
           <div className="grid grid-cols-12 gap-x-6 gap-y-10">
             <p className="col-span-12 md:col-span-2 text-[10px] uppercase tracking-[0.24em] text-ink-muted">
-              § Chapter II
+              Chapter II
               <br />
               <span className="text-ink-muted/70">Try the beta</span>
             </p>

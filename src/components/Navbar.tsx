@@ -3,9 +3,9 @@ import { Link } from '@tanstack/react-router'
 import { HeartMark } from '~/components/HeartMark'
 
 const links = [
-  { to: '/portfolio', label: 'Investments' },
-  { to: '/projects', label: 'Projects' },
-  { to: '/community', label: 'Community' },
+  { hash: 'build', label: 'What we build' },
+  { hash: 'back', label: 'Who we back' },
+  { hash: 'community', label: 'Community' },
 ] as const
 
 export function Navbar() {
@@ -34,39 +34,37 @@ export function Navbar() {
 
   return (
     <nav ref={menuRef} className="sticky top-0 z-50 bg-paper border-b border-rule">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+      <div className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,46px)]">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2.5 group">
-            <HeartMark className="w-4 h-4 text-accent transition-colors group-hover:text-ink" />
-            <span className="font-display text-xl tracking-tight text-ink">
+            <HeartMark
+              strokeWidth={1.6}
+              className="w-[19px] h-[18px] text-accent transition-colors group-hover:text-ink"
+            />
+            <span className="font-display font-semibold text-xl tracking-[-0.01em] text-ink">
               LSD Capital
             </span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-[clamp(16px,3vw,32px)]">
             {links.map((link) => (
               <Link
-                key={link.to}
-                to={link.to}
-                className="text-[11px] uppercase tracking-[0.22em] text-ink-muted hover:text-ink transition-colors"
-                activeProps={{ className: 'text-ink' }}
+                key={link.hash}
+                to="/"
+                hash={link.hash}
+                className="text-[14.5px] text-ink-muted hover:text-ink transition-colors"
               >
                 {link.label}
               </Link>
             ))}
           </div>
 
-          <div className="hidden md:flex items-center gap-6">
-            <span className="text-[10px] uppercase tracking-[0.22em] text-ink-muted tabular-nums">
-              Vol. 01 / 2026
-            </span>
-            <a
-              href="mailto:hello@lsd.capital"
-              className="text-[11px] uppercase tracking-[0.22em] text-ink hover:text-accent transition-colors"
-            >
-              Contact →
-            </a>
-          </div>
+          <a
+            href="mailto:hello@lsd.capital"
+            className="hidden md:inline-flex bg-ink text-paper rounded-full px-5 py-2.5 text-[13.5px] font-medium hover:opacity-90 transition-opacity"
+          >
+            Say hello
+          </a>
 
           <button
             type="button"
@@ -88,13 +86,14 @@ export function Navbar() {
           id="mobile-menu"
           className="absolute top-full left-0 right-0 bg-paper border-b border-rule md:hidden"
         >
-          <div className="max-w-6xl mx-auto px-6 py-6 space-y-1">
+          <div className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,46px)] py-6 space-y-1">
             {links.map((link) => (
               <Link
-                key={link.to}
-                to={link.to}
+                key={link.hash}
+                to="/"
+                hash={link.hash}
                 onClick={closeMobileMenu}
-                className="block py-3 font-display text-2xl text-ink border-b border-rule"
+                className="block py-3 font-display font-semibold text-2xl text-ink border-b border-rule"
               >
                 {link.label}
               </Link>
@@ -102,13 +101,10 @@ export function Navbar() {
             <a
               href="mailto:hello@lsd.capital"
               onClick={closeMobileMenu}
-              className="block pt-6 text-[11px] uppercase tracking-[0.22em] text-ink"
+              className="inline-flex mt-6 bg-ink text-paper rounded-full px-5 py-2.5 text-[13.5px] font-medium"
             >
-              Contact →
+              Say hello
             </a>
-            <p className="pt-4 text-[10px] uppercase tracking-[0.22em] text-ink-muted">
-              Vol. 01 / 2026
-            </p>
           </div>
         </div>
       )}

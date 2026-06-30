@@ -21,15 +21,11 @@ const stripProtocol = (url: string) =>
 function PortfolioPage() {
   return (
     <>
-      <header className="relative border-b border-rule overflow-hidden">
-        <span
-          aria-hidden="true"
-          className="absolute top-0 left-0 right-0 h-px bg-ink origin-left animate-[rule-draw_700ms_ease-out_forwards]"
-        />
+      <header className="border-b border-rule">
         <div className="max-w-6xl mx-auto px-6 lg:px-8 pt-20 pb-20 md:pt-32 md:pb-28">
           <div className="grid grid-cols-12 gap-x-6 gap-y-8">
             <p className="col-span-12 md:col-span-2 text-[10px] uppercase tracking-[0.24em] text-ink-muted">
-              § Investments
+              Investments
               <br />
               <span className="text-ink-muted/70 tabular-nums">{portfolio.length} investments</span>
             </p>
