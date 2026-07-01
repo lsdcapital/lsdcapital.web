@@ -1,0 +1,21 @@
+<svg viewBox="0 0 268 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="ficta">
+  <g id="ficta-mark" stroke="#34c6a6" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <polygon
+      points="79.3,58.8 59.8,78.3 32.2,78.3 12.7,58.8 12.7,31.2 32.2,11.7 59.8,11.7 79.3,31.2"
+      fill="none"
+    />
+  </g>
+  <g id="ficta-i" fill="#34c6a6">
+    <circle cx="46" cy="29.5" r="4.6" />
+    <rect x="42.4" y="40" width="7.2" height="22" rx="3.6" />
+  </g>
+  <text
+    x="100"
+    y="62"
+    font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
+    font-size="52"
+    font-weight="700"
+    letter-spacing="-1"
+    fill="#2a241d"
+  >ficta</text>
+</svg>

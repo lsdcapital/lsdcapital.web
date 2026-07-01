@@ -39,4 +39,18 @@ export const projects: Project[] = [
     internalUrl: '/projects/itwyit',
     externalUrl: 'https://itwyit.lsd.capital',
   },
+  {
+    slug: 'ficta',
+    name: 'ficta',
+    tagline: 'A local secret airlock for coding agents',
+    body:
+      'A local secret airlock for coding agents. ficta sits between your coding agent and the model provider, swapping secret values — from .env or Doppler — for deterministic placeholders before any request leaves your machine, then restoring the real values locally so the agent works normally. If a protected value would survive redaction, ficta fails closed and blocks the request. No telemetry, MIT-licensed, pre-1.0 beta.',
+    cardBody:
+      'Swaps secrets for deterministic placeholders before requests leave your machine, then restores them locally. Fails closed if a secret would leak.',
+    chips: ['CLI', 'Open source'],
+    logo: '/ficta-logo.svg',
+    bg: 'dark',
+    internalUrl: '/projects/ficta',
+    externalUrl: 'https://github.com/steflsd/ficta',
+  },
 ]

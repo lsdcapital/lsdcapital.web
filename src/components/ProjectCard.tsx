@@ -61,6 +61,24 @@ function ProjectMock({ slug }: { slug: string }) {
     )
   }
 
+  if (slug === 'ficta') {
+    return (
+      <div className="flex-none w-[130px] bg-ink rounded-2xl px-3.5 py-4 flex flex-col gap-2 justify-center font-mono">
+        <div className="flex items-center gap-1.5 mb-0.5">
+          <span className="w-2 h-2 rounded-full bg-[#6b5f50]" />
+          <span className="text-[8px] tracking-[0.16em] uppercase text-[#8a7d6b]">.env</span>
+        </div>
+        <div className="rounded-lg bg-[#3a322a] px-2 py-1.5 text-[9px] text-cream truncate">
+          sk-live-9f2a…
+        </div>
+        <div className="text-center text-accent text-[13px] leading-[0.5]">↓</div>
+        <div className="rounded-lg bg-accent px-2 py-1.5 text-[9px] font-semibold text-cream truncate">
+          ⟨REDACTED_01⟩
+        </div>
+      </div>
+    )
+  }
+
   return null
 }
 

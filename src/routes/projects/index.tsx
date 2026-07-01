@@ -9,7 +9,7 @@ export const Route = createFileRoute('/projects/')({
       {
         name: 'description',
         content:
-          'Things we are building — LinkiDink, a word connection puzzle game, and itwyit, a private space for two people to compare notes.',
+          'Things we are building — LinkiDink, a word connection puzzle game; itwyit, a private space for two people to compare notes; and ficta, a local secret airlock for coding agents.',
       },
     ],
   }),
