@@ -16,6 +16,9 @@ export const Route = createFileRoute('/projects/ficta/')({
         content:
           'A local secret airlock for coding agents. Swap secrets for placeholders before requests leave your machine; restore them locally. No telemetry, MIT-licensed.',
       },
+      { property: 'og:image', content: 'https://lsd.capital/ficta-overview.png' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:image', content: 'https://lsd.capital/ficta-overview.png' },
     ],
   }),
 })
@@ -74,6 +77,22 @@ function FictaPage() {
           </div>
         </div>
       </header>
+
+      <section className="border-b border-rule">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-16 md:py-20">
+          <figure className="overflow-hidden rounded-xl border border-rule bg-ink">
+            <img
+              src="/ficta-overview.png"
+              alt="ficta intercepts secrets like sk-live-… and ghp_… and swaps them for deterministic placeholders such as <SECRET_01> and <API_KEY> before requests leave your machine. Works with Claude Code, Codex and Pi."
+              width={1731}
+              height={909}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-auto"
+            />
+          </figure>
+        </div>
+      </section>
 
       <section className="border-b border-rule">
         <div className="max-w-6xl mx-auto px-6 lg:px-8 py-20 md:py-28">
