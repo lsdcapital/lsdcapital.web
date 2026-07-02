@@ -35,7 +35,7 @@ export function Footer() {
                 <Link
                   to="/"
                   hash={link.hash}
-                  className="text-ink hover:text-accent transition-colors"
+                  className="text-ink hover:text-accent-strong transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -60,7 +60,7 @@ export function Footer() {
           <h4 className="mb-4 text-[13px] text-faint">Say hello</h4>
           <a
             href="mailto:hello@lsd.capital"
-            className="text-base font-semibold text-accent hover:opacity-80 transition-opacity"
+            className="text-base font-semibold text-accent-strong underline underline-offset-2 hover:opacity-80 transition-opacity"
           >
             hello@lsd.capital
           </a>

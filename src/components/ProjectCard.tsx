@@ -9,7 +9,10 @@ import type { Project } from '~/data/projects'
 function ProjectMock({ slug }: { slug: string }) {
   if (slug === 'linkidink') {
     return (
-      <div className="flex-none w-[130px] bg-ink rounded-2xl px-[13px] py-4 flex flex-col gap-2 justify-center">
+      <div
+        aria-hidden="true"
+        className="flex-none w-[130px] bg-ink rounded-2xl px-[13px] py-4 flex flex-col gap-2 justify-center"
+      >
         <div className="text-center text-[9px] tracking-[0.16em] uppercase text-[#a9805a] mb-0.5">
           Today
         </div>
@@ -37,7 +40,10 @@ function ProjectMock({ slug }: { slug: string }) {
     const filled = `${dot} bg-accent`
     const empty = `${dot} border-[1.5px] border-[#d9cdb8]`
     return (
-      <div className="flex-none w-[130px] bg-white border border-rule rounded-2xl px-[13px] py-[15px] flex flex-col gap-[9px] justify-center">
+      <div
+        aria-hidden="true"
+        className="flex-none w-[130px] bg-white border border-rule rounded-2xl px-[13px] py-[15px] flex flex-col gap-[9px] justify-center"
+      >
         <div className="flex justify-between text-[9px] tracking-[0.1em] uppercase text-faint">
           <span>You</span>
           <span>Them</span>
@@ -63,7 +69,10 @@ function ProjectMock({ slug }: { slug: string }) {
 
   if (slug === 'ficta') {
     return (
-      <div className="flex-none w-[130px] bg-ink rounded-2xl px-3.5 py-4 flex flex-col gap-2 justify-center font-mono">
+      <div
+        aria-hidden="true"
+        className="flex-none w-[130px] bg-ink rounded-2xl px-3.5 py-4 flex flex-col gap-2 justify-center font-mono"
+      >
         <div className="flex items-center gap-1.5 mb-0.5">
           <span className="w-2 h-2 rounded-full bg-[#6b5f50]" />
           <span className="text-[8px] tracking-[0.16em] uppercase text-[#8a7d6b]">.env</span>
@@ -91,7 +100,7 @@ export function ProjectCard({ project }: { project: Project }) {
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2.5 mb-2.5">
           {project.logo ? (
-            <img src={project.logo} alt={project.name} className="h-[26px] w-auto" />
+            <img src={project.logo} alt="" className="h-[26px] w-auto" />
           ) : (
             <span className="w-[26px] h-[26px] rounded-[7px] bg-ink text-cream flex items-center justify-center font-display font-semibold text-[13px]">
               {project.name.slice(0, 2).toLowerCase()}

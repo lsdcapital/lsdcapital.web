@@ -63,7 +63,7 @@ function Home() {
           </div>
           <Link
             to="/portfolio"
-            className="inline-block mt-6 text-[15px] font-semibold text-accent hover:opacity-80 transition-opacity"
+            className="inline-block mt-6 text-[15px] font-semibold text-accent-strong underline underline-offset-2 hover:opacity-80 transition-opacity"
           >
             See the full portfolio →
           </Link>
@@ -92,7 +92,7 @@ function Home() {
               href={camp.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[15px] font-semibold text-accent hover:opacity-80 transition-opacity"
+              className="text-[15px] font-semibold text-accent-strong underline underline-offset-2 hover:opacity-80 transition-opacity"
             >
               Visit NDL — our camp ↗
             </a>

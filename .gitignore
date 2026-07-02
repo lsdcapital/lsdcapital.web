@@ -29,3 +29,5 @@ src/routeTree.gen.ts
 *.sw?
 .env
 .vercel
+.impeccable
+.claude/skills

@@ -7,10 +7,11 @@
   --color-paper: #f3ebdd;
   --color-surface: #fcf8f0;
   --color-ink: #2a241d;
-  --color-ink-muted: #7a6f60;
-  --color-faint: #9a8c78;
+  --color-ink-muted: #655a4a;
+  --color-faint: #6f6454;
   --color-rule: #e4d9c5;
   --color-accent: #1f9442;
+  --color-accent-strong: #17752f;
   --color-cream: #fbf3e8;
 }
 
@@ -20,6 +21,27 @@ html {
 
 body {
   font-feature-settings: "ss01", "ss02", "kern", "liga";
+}
+
+/* Visible, on-brand keyboard focus indicator (WCAG 2.4.7). */
+:focus-visible {
+  outline: 2px solid var(--color-accent-strong);
+  outline-offset: 2px;
+}
+
+/* Honour users who prefer reduced motion: no smooth-scroll, no hover fades. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 body::before {

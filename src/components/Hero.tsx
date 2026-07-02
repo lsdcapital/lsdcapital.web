@@ -21,7 +21,7 @@ export function Hero() {
       <div className="mt-10 flex flex-wrap items-center gap-[22px]">
         <a
           href="mailto:hello@lsd.capital"
-          className="inline-flex bg-accent text-cream rounded-full px-7 py-3.5 text-[15px] font-semibold hover:opacity-90 transition-opacity"
+          className="inline-flex bg-accent-strong text-cream rounded-full px-7 py-3.5 text-[15px] font-semibold hover:opacity-90 transition-opacity"
         >
           Start a conversation
         </a>
