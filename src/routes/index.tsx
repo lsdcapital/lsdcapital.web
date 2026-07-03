@@ -105,6 +105,28 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* Closing statement — a confident brand beat, not a contact CTA */}
+      <section className="bg-accent-strong">
+        <div
+          className={`${container} py-[clamp(64px,9vw,110px)] flex flex-col items-center text-center`}
+        >
+          <HeartMark strokeWidth={1.2} className="w-12 h-11 text-cream" />
+          <h2 className="mt-7 font-display font-semibold text-cream text-[clamp(34px,6vw,64px)] leading-[1.05] tracking-[-0.03em] max-w-[760px] text-balance">
+            In for the long middle.
+          </h2>
+          <p className="mt-6 max-w-[520px] text-[clamp(16px,2vw,19px)] leading-[1.6] text-[#efe4d0]">
+            Not the pitch and not the exit — the years in between, building the
+            things we believe in and backing the people doing the same.
+          </p>
+          <a
+            href="mailto:hello@lsd.capital"
+            className="mt-9 text-[14px] text-[#efe4d0] underline underline-offset-4 hover:text-cream transition-colors"
+          >
+            or just say hello — hello@lsd.capital
+          </a>
+        </div>
+      </section>
     </>
   )
 }

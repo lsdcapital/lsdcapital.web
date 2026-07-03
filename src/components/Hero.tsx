@@ -5,7 +5,7 @@ export function Hero() {
       className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,46px)] pt-[clamp(48px,8vw,80px)] pb-[clamp(36px,5vw,56px)]"
     >
       <p className="text-[15px] text-faint">
-        A tiny product studio that also invests · Cape Town &amp; Mahé
+        A tiny product studio that also invests · Cape Town &amp; Seychelles
       </p>
 
       <h1 className="mt-5 font-display font-semibold text-ink max-w-[980px] text-[clamp(40px,6.4vw,80px)] leading-[1] tracking-[-0.035em]">
