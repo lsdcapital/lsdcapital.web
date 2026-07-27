@@ -6,8 +6,9 @@
   "compatibility_flags": ["nodejs_compat"],
   "main": "@tanstack/react-start/server-entry",
   "workers_dev": false,
-  "preview_urls": false,
-  "routes": [
-    { "pattern": "lsd.capital", "custom_domain": true }
-  ]
+  "preview_urls": false
+  // No "routes" here on purpose. Terraform owns the lsd.capital custom domain
+  // (lsdcapital/cloudflare in the lsdcapital/tf repo); Wrangler only publishes
+  // code. Declaring the hostname in both places makes every deploy re-assert it
+  // and fight Terraform for ownership.
 }
