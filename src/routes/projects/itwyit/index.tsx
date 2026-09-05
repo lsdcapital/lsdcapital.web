@@ -1,39 +1,39 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/projects/itwyit/')({
+export const Route = createFileRoute("/projects/itwyit/")({
   component: ItwyitPage,
   head: () => ({
     meta: [
-      { title: 'itwyit — If I only knew, that\'s what you\'re into | LSD Capital' },
+      { title: "itwyit — If I only knew, that's what you're into | LSD Capital" },
       {
-        name: 'description',
+        name: "description",
         content:
-          'A private space for two people to compare notes — on what they’re into, and on how they like to be loved. No accounts, no tracking, just between you two.',
+          "A private space for two people to compare notes — on what they’re into, and on how they like to be loved. No accounts, no tracking, just between you two.",
       },
-      { property: 'og:title', content: 'itwyit — Honesty without shame' },
+      { property: "og:title", content: "itwyit — Honesty without shame" },
       {
-        property: 'og:description',
+        property: "og:description",
         content:
-          'Two questionnaires for two people: the namesake intimacy questionnaire and a take on the five love languages. Only mutual yeses are revealed.',
+          "Two questionnaires for two people: the namesake intimacy questionnaire and a take on the five love languages. Only mutual yeses are revealed.",
       },
     ],
   }),
-})
+});
 
 const questionnaires = [
   {
-    n: '01',
-    kind: 'Intimacy',
-    title: 'If that’s what you’re into',
-    dek: 'Discover the overlap of shared interests — without anyone having to go first.',
+    n: "01",
+    kind: "Intimacy",
+    title: "If that’s what you’re into",
+    dek: "Discover the overlap of shared interests — without anyone having to go first.",
   },
   {
-    n: '02',
-    kind: 'Connection',
-    title: 'Love languages',
-    dek: 'A take on the five love languages — how each of you gives, and likes to receive, love.',
+    n: "02",
+    kind: "Connection",
+    title: "Love languages",
+    dek: "A take on the five love languages — how each of you gives, and likes to receive, love.",
   },
-] as const
+] as const;
 
 function ItwyitPage() {
   return (
@@ -73,10 +73,13 @@ function ItwyitPage() {
             </p>
             <div className="col-span-12 md:col-span-10 grid md:grid-cols-2 gap-x-10 gap-y-8 max-w-4xl">
               <p className="text-ink leading-relaxed text-lg">
-                Each partner answers a short questionnaire on their own. Nothing is shared until both of you have answered. When you have, only the things you both said yes to are revealed — the rest stays private, on both sides.
+                Each partner answers a short questionnaire on their own. Nothing is shared until
+                both of you have answered. When you have, only the things you both said yes to are
+                revealed — the rest stays private, on both sides.
               </p>
               <p className="text-ink leading-relaxed text-lg">
-                No accounts to create. No long-lived data linked to your identity. Discovery without risk: nobody has to go first, and nobody has to know what the other said no to.
+                No accounts to create. No long-lived data linked to your identity. Discovery without
+                risk: nobody has to go first, and nobody has to know what the other said no to.
               </p>
             </div>
           </div>
@@ -147,7 +150,9 @@ function ItwyitPage() {
                 className="group inline-flex items-baseline gap-2 mt-10 text-[11px] uppercase tracking-[0.24em] text-ink border-b border-ink pb-1 hover:text-accent hover:border-accent transition-colors"
               >
                 <span>Visit itwyit.lsd.capital</span>
-                <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">↗</span>
+                <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
+                  ↗
+                </span>
               </a>
             </div>
           </div>
@@ -169,5 +174,5 @@ function ItwyitPage() {
         </div>
       </section>
     </>
-  )
+  );
 }

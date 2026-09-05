@@ -1,19 +1,19 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
-import { projects } from '~/data/projects'
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { projects } from "~/data/projects";
 
-export const Route = createFileRoute('/projects/')({
+export const Route = createFileRoute("/projects/")({
   component: ProjectsPage,
   head: () => ({
     meta: [
-      { title: 'Projects — LSD Capital' },
+      { title: "Projects — LSD Capital" },
       {
-        name: 'description',
+        name: "description",
         content:
-          'Things we are building — LinkiDink, a word connection puzzle game; itwyit, a private space for two people to compare notes; and ficta, a local secret airlock for coding agents.',
+          "Things we are building — LinkiDink, a word connection puzzle game; itwyit, a private space for two people to compare notes; and ficta, a local secret airlock for coding agents.",
       },
     ],
   }),
-})
+});
 
 function ProjectsPage() {
   return (
@@ -30,7 +30,8 @@ function ProjectsPage() {
               Things we're <em className="italic font-normal text-accent">building.</em>
             </h1>
             <p className="col-span-12 md:col-start-3 md:col-span-7 font-display italic text-xl md:text-2xl text-ink-muted leading-snug">
-              Apps, tools, and experiments we work on ourselves — shipped, in beta, or still in the kitchen.
+              Apps, tools, and experiments we work on ourselves — shipped, in beta, or still in the
+              kitchen.
             </p>
           </div>
         </div>
@@ -45,7 +46,7 @@ function ProjectsPage() {
             >
               <div className="col-span-12 md:col-span-2 flex md:block items-center gap-4">
                 <p className="text-[10px] uppercase tracking-[0.24em] text-ink-muted">
-                  No. {String(i + 1).padStart(2, '0')}
+                  No. {String(i + 1).padStart(2, "0")}
                   <br />
                   <span className="text-ink-muted/70">Project</span>
                 </p>
@@ -65,22 +66,27 @@ function ProjectsPage() {
                 </div>
               )}
 
-              <div className={`col-span-12 max-w-2xl ${project.logo ? 'md:col-span-7' : 'md:col-span-10'}`}>
+              <div
+                className={`col-span-12 max-w-2xl ${project.logo ? "md:col-span-7" : "md:col-span-10"}`}
+              >
                 <h2 className="font-display text-5xl md:text-6xl text-ink leading-[0.95] tracking-[-0.01em]">
                   {project.name}
                 </h2>
                 <p className="font-display italic text-xl md:text-2xl text-ink-muted mt-4 leading-snug">
                   {project.tagline}.
                 </p>
-                <p className="mt-8 leading-relaxed text-ink">
-                  {project.body}
-                </p>
+                <p className="mt-8 leading-relaxed text-ink">{project.body}</p>
                 <Link
                   to={project.internalUrl}
                   className="group inline-flex items-baseline gap-2 mt-10 text-[11px] uppercase tracking-[0.24em] text-ink border-b border-ink pb-1 hover:text-accent hover:border-accent transition-colors"
                 >
                   <span>Read more</span>
-                  <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+                  <span
+                    aria-hidden="true"
+                    className="transition-transform group-hover:translate-x-1"
+                  >
+                    →
+                  </span>
                 </Link>
               </div>
             </article>
@@ -88,5 +94,5 @@ function ProjectsPage() {
         </div>
       </section>
     </>
-  )
+  );
 }

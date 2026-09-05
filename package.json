@@ -1,45 +1,43 @@
 {
   "name": "lsdcapital-web",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "type": "module",
-  "engines": {
-    "node": "24.17.0"
-  },
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && tsc --noEmit",
     "preview": "vite preview",
     "deploy": "pnpm build && wrangler deploy",
     "cf-typegen": "wrangler types",
-    "lint": "eslint .",
-    "check": "eslint . && tsc --noEmit",
+    "lint": "oxlint .",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
+    "check": "pnpm lint && pnpm format:check && tsc --noEmit",
     "update": "pnpm up -i -L"
   },
   "dependencies": {
-    "@tanstack/react-router": "^1.170.16",
-    "@tanstack/react-start": "^1.168.26",
-    "lucide-react": "^1.23.0",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "@tanstack/react-router": "^1.170.32",
+    "@tanstack/react-start": "^1.168.49",
+    "lucide-react": "^1.40.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.42.4",
-    "@eslint/js": "^10.0.1",
-    "@tailwindcss/vite": "^4.3.2",
-    "@tanstack/react-router-devtools": "^1.167.0",
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.3",
-    "eslint": "^10.6.0",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.3",
-    "globals": "^17.7.0",
-    "tailwindcss": "^4.3.2",
-    "typescript": "^6.0.3",
-    "typescript-eslint": "^8.62.1",
-    "vite": "^8.1.2",
-    "wrangler": "^4.106.0"
+    "@cloudflare/vite-plugin": "^1.54.4",
+    "@tailwindcss/vite": "^4.3.3",
+    "@tanstack/react-router-devtools": "^1.167.1",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "oxfmt": "^0.66.0",
+    "oxlint": "^1.81.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.2",
+    "wrangler": "^4.129.0"
+  },
+  "engines": {
+    "node": "24.17.0"
   },
   "packageManager": "pnpm@11.25.0"
 }

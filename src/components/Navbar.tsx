@@ -1,36 +1,36 @@
-import { useState, useEffect, useRef } from 'react'
-import { Link } from '@tanstack/react-router'
-import { HeartMark } from '~/components/HeartMark'
+import { useState, useEffect, useRef } from "react";
+import { Link } from "@tanstack/react-router";
+import { HeartMark } from "~/components/HeartMark";
 
 const links = [
-  { hash: 'build', label: 'What we build' },
-  { hash: 'back', label: 'Who we back' },
-  { hash: 'community', label: 'Community' },
-] as const
+  { hash: "build", label: "What we build" },
+  { hash: "back", label: "Who we back" },
+  { hash: "community", label: "Community" },
+] as const;
 
 export function Navbar() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const menuRef = useRef<HTMLDivElement>(null)
-  const closeMobileMenu = () => setIsMobileMenuOpen(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   useEffect(() => {
-    if (!isMobileMenuOpen) return
+    if (!isMobileMenuOpen) return;
 
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsMobileMenuOpen(false)
-    }
+      if (e.key === "Escape") setIsMobileMenuOpen(false);
+    };
     const handleClick = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setIsMobileMenuOpen(false)
+        setIsMobileMenuOpen(false);
       }
-    }
-    document.addEventListener('keydown', handleKey)
-    document.addEventListener('mousedown', handleClick)
+    };
+    document.addEventListener("keydown", handleKey);
+    document.addEventListener("mousedown", handleClick);
     return () => {
-      document.removeEventListener('keydown', handleKey)
-      document.removeEventListener('mousedown', handleClick)
-    }
-  }, [isMobileMenuOpen])
+      document.removeEventListener("keydown", handleKey);
+      document.removeEventListener("mousedown", handleClick);
+    };
+  }, [isMobileMenuOpen]);
 
   return (
     <nav ref={menuRef} className="sticky top-0 z-50 bg-paper border-b border-rule">
@@ -69,13 +69,15 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
             className="md:hidden text-ink"
           >
             <span className="block w-6 h-px bg-ink mb-1.5" />
-            <span className={`block w-6 h-px bg-ink transition-opacity ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} />
+            <span
+              className={`block w-6 h-px bg-ink transition-opacity ${isMobileMenuOpen ? "opacity-0" : "opacity-100"}`}
+            />
             <span className="block w-6 h-px bg-ink mt-1.5" />
           </button>
         </div>
@@ -109,5 +111,5 @@ export function Navbar() {
         </div>
       )}
     </nav>
-  )
+  );
 }

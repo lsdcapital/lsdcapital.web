@@ -1,11 +1,11 @@
-import { Link } from '@tanstack/react-router'
-import { HeartMark } from '~/components/HeartMark'
+import { Link } from "@tanstack/react-router";
+import { HeartMark } from "~/components/HeartMark";
 
 const exploreLinks = [
-  { hash: 'build', label: 'What we build' },
-  { hash: 'back', label: 'Who we back' },
-  { hash: 'community', label: 'Community' },
-] as const
+  { hash: "build", label: "What we build" },
+  { hash: "back", label: "Who we back" },
+  { hash: "community", label: "Community" },
+] as const;
 
 export function Footer() {
   return (
@@ -17,13 +17,10 @@ export function Footer() {
               strokeWidth={1.6}
               className="w-[18px] h-[17px] text-accent transition-colors group-hover:text-ink"
             />
-            <span className="font-display font-semibold text-xl text-ink">
-              LSD Capital
-            </span>
+            <span className="font-display font-semibold text-xl text-ink">LSD Capital</span>
           </Link>
           <p className="mt-4 text-base leading-[1.55] text-ink-muted">
-            Heart-led — we build things we believe in, and back the people doing
-            the same.
+            Heart-led — we build things we believe in, and back the people doing the same.
           </p>
         </div>
 
@@ -74,5 +71,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

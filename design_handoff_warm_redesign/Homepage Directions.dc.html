@@ -1,451 +1,2530 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet data-dc-atomics>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet">
-<style>
-  body{margin:0;background:#e7e2d7;font-family:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-  *{box-sizing:border-box}
-  .dv-turn{padding:44px 48px 40px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
-  .dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 26px}
-  .dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#111;color:#faf8f3;border-radius:4px;text-decoration:none}
-  .dv-tname{font:600 13px/1.2 "Instrument Sans",system-ui,sans-serif;color:#1a1a1a}
-  .dv-opts{display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start}
-  .dv-opt{flex:none;display:flex;flex-direction:column;gap:11px;scroll-margin-top:16px}
-  .dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
-  .dv-olabel{display:flex;align-items:baseline;gap:9px;font:400 11.5px/1.3 "Instrument Sans",system-ui,sans-serif;color:rgba(0,0,0,.55)}
-  .dv-card{background:#faf8f3;border:1px solid rgba(0,0,0,.1);border-radius:10px;box-shadow:0 6px 30px rgba(0,0,0,.1);overflow:hidden;position:relative}
-  .dv-card::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:30;opacity:.04;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
-  .dv-opt:target .dv-oid{background:#1f5d3a;color:#fff}
-  .dv-next{margin:26px 0 0;font:13px/1.6 "Instrument Sans",system-ui,sans-serif;color:rgba(0,0,0,.5)}
-  .dv-next a{color:rgba(0,0,0,.5)}
-  .lsd-nav{display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 40px;border-bottom:1px solid #d9d4c7}
-  .lsd-navlinks{display:flex;gap:30px;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#5a5a55}
-  em.acc{font-style:italic;font-weight:400;color:#1f5d3a}
-  .logo-strip img{height:22px;max-width:120px;object-fit:contain;object-position:center;filter:grayscale(1);opacity:.55}
-</style>
-</helmet>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="./support.js"></script>
+  </head>
+  <body>
+    <x-dc>
+      <helmet data-dc-atomics>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Instrument+Sans:wght@400;500;600&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Hedvig+Letters+Serif:opsz@12..24&display=swap"
+          rel="stylesheet"
+        />
+        <style>
+          body {
+            margin: 0;
+            background: #e7e2d7;
+            font-family: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+            -webkit-font-smoothing: antialiased;
+          }
+          * {
+            box-sizing: border-box;
+          }
+          .dv-turn {
+            padding: 44px 48px 40px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            scroll-margin-top: 16px;
+          }
+          .dv-thd {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin: 0 0 26px;
+          }
+          .dv-tid {
+            font:
+              600 10px ui-monospace,
+              Menlo,
+              monospace;
+            padding: 3px 7px;
+            background: #111;
+            color: #faf8f3;
+            border-radius: 4px;
+            text-decoration: none;
+          }
+          .dv-tname {
+            font:
+              600 13px/1.2 "Instrument Sans",
+              system-ui,
+              sans-serif;
+            color: #1a1a1a;
+          }
+          .dv-opts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: flex-start;
+          }
+          .dv-opt {
+            flex: none;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+            scroll-margin-top: 16px;
+          }
+          .dv-oid {
+            font:
+              600 10.5px ui-monospace,
+              Menlo,
+              monospace;
+            padding: 3px 7px;
+            background: rgba(0, 0, 0, 0.08);
+            color: #1a1a1a;
+            border-radius: 5px;
+            text-decoration: none;
+          }
+          .dv-olabel {
+            display: flex;
+            align-items: baseline;
+            gap: 9px;
+            font:
+              400 11.5px/1.3 "Instrument Sans",
+              system-ui,
+              sans-serif;
+            color: rgba(0, 0, 0, 0.55);
+          }
+          .dv-card {
+            background: #faf8f3;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+          }
+          .dv-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 30;
+            opacity: 0.04;
+            mix-blend-mode: multiply;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+          }
+          .dv-opt:target .dv-oid {
+            background: #1f5d3a;
+            color: #fff;
+          }
+          .dv-next {
+            margin: 26px 0 0;
+            font:
+              13px/1.6 "Instrument Sans",
+              system-ui,
+              sans-serif;
+            color: rgba(0, 0, 0, 0.5);
+          }
+          .dv-next a {
+            color: rgba(0, 0, 0, 0.5);
+          }
+          .lsd-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            padding: 0 40px;
+            border-bottom: 1px solid #d9d4c7;
+          }
+          .lsd-navlinks {
+            display: flex;
+            gap: 30px;
+            font-size: 10.5px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: #5a5a55;
+          }
+          em.acc {
+            font-style: italic;
+            font-weight: 400;
+            color: #1f5d3a;
+          }
+          .logo-strip img {
+            height: 22px;
+            max-width: 120px;
+            object-fit: contain;
+            object-position: center;
+            filter: grayscale(1);
+            opacity: 0.55;
+          }
+        </style>
+      </helmet>
 
-<section class="dv-turn" id="t3">
-  <div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">Rebalanced — we <em>build</em> as much as we invest. Projects get real billing.</span></div>
-  <div class="dv-opts">
-
-    <!-- ============ 3a — BACK & BUILD (dual, balanced) ============ -->
-    <div class="dv-opt" id="3a">
-      <div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a>Back &amp; build — equal billing, projects shown as real products</div>
-      <div class="dv-card" style="width:1180px;background:#f3ebdd;font-family:'Hanken Grotesk',sans-serif">
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:24px 46px">
-          <div style="display:flex;align-items:center;gap:10px">
-            <svg viewBox="0 0 24 22" width="19" height="18" fill="none" style="color:#c2542f"><path d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-.01em;color:#2a241d">LSD Capital</span>
-          </div>
-          <div style="display:flex;gap:30px;font-size:14.5px;color:#7a6f60"><span>What we build</span><span>Who we back</span><span>Community</span></div>
-          <a href="mailto:hello@lsd.capital" style="background:#2a241d;color:#f3ebdd;padding:11px 22px;border-radius:999px;font-size:13.5px;font-weight:500;text-decoration:none">Say hello</a>
+      <section class="dv-turn" id="t3">
+        <div class="dv-thd">
+          <a class="dv-tid" href="#t3">3</a
+          ><span class="dv-tname"
+            >Rebalanced — we <em>build</em> as much as we invest. Projects get real billing.</span
+          >
         </div>
-        <div style="padding:64px 46px 0">
-          <p style="margin:0 0 20px;font-size:15px;color:#9a8c78">A tiny product studio that also invests · Cape Town &amp; Mahé</p>
-          <h1 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:78px;line-height:1;letter-spacing:-.035em;color:#2a241d;max-width:940px">We build the things we wish existed — <span style="color:#c2542f">and back the people building the rest.</span></h1>
-          <p style="margin:28px 0 0;font-size:20px;line-height:1.55;color:#6f6456;max-width:600px">Some weeks we ship. Some weeks we invest. It's all the same instinct: heart-led, hands-on, in for the long middle.</p>
-        </div>
-        <!-- what we build -->
-        <div style="padding:56px 46px 16px">
-          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:22px">
-            <h2 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:24px;color:#2a241d">Things we're building</h2>
-            <span style="font-size:14px;color:#9a8c78">Shipped quietly, no fanfare</span>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
-            <!-- LinkiDink -->
-            <div style="background:#fcf8f0;border:1px solid #e4d9c5;border-radius:18px;padding:26px;display:flex;gap:24px">
-              <div style="flex:1">
-                <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px"><img src="assets/linkidink-logo.png" alt="" style="height:22px;width:auto"><span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:21px;color:#2a241d">LinkiDink</span></div>
-                <p style="margin:0 0 16px;font-size:14.5px;line-height:1.5;color:#7a6f60">A calm daily word-connection puzzle. Link words by their hidden meanings, climb a small daily ladder.</p>
-                <div style="display:flex;gap:10px;font-size:12px;color:#9a8c78"><span style="border:1px solid #e4d9c5;border-radius:999px;padding:4px 11px">iOS</span><span style="border:1px solid #e4d9c5;border-radius:999px;padding:4px 11px">Android</span></div>
+        <div class="dv-opts">
+          <!-- ============ 3a — BACK & BUILD (dual, balanced) ============ -->
+          <div class="dv-opt" id="3a">
+            <div class="dv-olabel">
+              <a class="dv-oid" href="#3a">3a</a>Back &amp; build — equal billing, projects shown as
+              real products
+            </div>
+            <div
+              class="dv-card"
+              style="
+                width: 1180px;
+                background: #f3ebdd;
+                font-family: &quot;Hanken Grotesk&quot;, sans-serif;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  padding: 24px 46px;
+                "
+              >
+                <div style="display: flex; align-items: center; gap: 10px">
+                  <svg
+                    viewBox="0 0 24 22"
+                    width="19"
+                    height="18"
+                    fill="none"
+                    style="color: #c2542f"
+                  >
+                    <path
+                      d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span
+                    style="
+                      font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                      font-weight: 600;
+                      font-size: 20px;
+                      letter-spacing: -0.01em;
+                      color: #2a241d;
+                    "
+                    >LSD Capital</span
+                  >
+                </div>
+                <div style="display: flex; gap: 30px; font-size: 14.5px; color: #7a6f60">
+                  <span>What we build</span><span>Who we back</span><span>Community</span>
+                </div>
+                <a
+                  href="mailto:hello@lsd.capital"
+                  style="
+                    background: #2a241d;
+                    color: #f3ebdd;
+                    padding: 11px 22px;
+                    border-radius: 999px;
+                    font-size: 13.5px;
+                    font-weight: 500;
+                    text-decoration: none;
+                  "
+                  >Say hello</a
+                >
               </div>
-              <div style="flex:none;width:118px;background:#2a241d;border-radius:14px;padding:14px 12px;display:flex;flex-direction:column;gap:7px;justify-content:center">
-                <div style="text-align:center;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#a9805a;margin-bottom:3px">Today</div>
-                <div style="background:#3a322a;border-radius:7px;padding:7px;text-align:center;font-size:12px;font-weight:600;color:#fbf3e8">OCEAN</div>
-                <div style="text-align:center;color:#c2542f;font-size:10px;line-height:.6">•</div>
-                <div style="background:#3a322a;border-radius:7px;padding:7px;text-align:center;font-size:12px;font-weight:600;color:#fbf3e8">BLUE</div>
-                <div style="text-align:center;color:#c2542f;font-size:10px;line-height:.6">•</div>
-                <div style="background:#c2542f;border-radius:7px;padding:7px;text-align:center;font-size:12px;font-weight:700;color:#fbf3e8">PRINT</div>
-                <div style="text-align:center;color:#6b5f50;font-size:10px;line-height:.6">•</div>
-                <div style="background:transparent;border:1px dashed #6b5f50;border-radius:7px;padding:7px;text-align:center;font-size:12px;color:#8a7d6b">? ? ? ?</div>
+              <div style="padding: 64px 46px 0">
+                <p style="margin: 0 0 20px; font-size: 15px; color: #9a8c78">
+                  A tiny product studio that also invests · Cape Town &amp; Mahé
+                </p>
+                <h1
+                  style="
+                    margin: 0;
+                    font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                    font-weight: 600;
+                    font-size: 78px;
+                    line-height: 1;
+                    letter-spacing: -0.035em;
+                    color: #2a241d;
+                    max-width: 940px;
+                  "
+                >
+                  We build the things we wish existed —
+                  <span style="color: #c2542f">and back the people building the rest.</span>
+                </h1>
+                <p
+                  style="
+                    margin: 28px 0 0;
+                    font-size: 20px;
+                    line-height: 1.55;
+                    color: #6f6456;
+                    max-width: 600px;
+                  "
+                >
+                  Some weeks we ship. Some weeks we invest. It's all the same instinct: heart-led,
+                  hands-on, in for the long middle.
+                </p>
+              </div>
+              <!-- what we build -->
+              <div style="padding: 56px 46px 16px">
+                <div
+                  style="
+                    display: flex;
+                    align-items: baseline;
+                    justify-content: space-between;
+                    margin-bottom: 22px;
+                  "
+                >
+                  <h2
+                    style="
+                      margin: 0;
+                      font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                      font-weight: 600;
+                      font-size: 24px;
+                      color: #2a241d;
+                    "
+                  >
+                    Things we're building
+                  </h2>
+                  <span style="font-size: 14px; color: #9a8c78">Shipped quietly, no fanfare</span>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px">
+                  <!-- LinkiDink -->
+                  <div
+                    style="
+                      background: #fcf8f0;
+                      border: 1px solid #e4d9c5;
+                      border-radius: 18px;
+                      padding: 26px;
+                      display: flex;
+                      gap: 24px;
+                    "
+                  >
+                    <div style="flex: 1">
+                      <div style="display: flex; align-items: center; gap: 9px; margin-bottom: 8px">
+                        <img
+                          src="assets/linkidink-logo.png"
+                          alt=""
+                          style="height: 22px; width: auto"
+                        /><span
+                          style="
+                            font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                            font-weight: 600;
+                            font-size: 21px;
+                            color: #2a241d;
+                          "
+                          >LinkiDink</span
+                        >
+                      </div>
+                      <p
+                        style="
+                          margin: 0 0 16px;
+                          font-size: 14.5px;
+                          line-height: 1.5;
+                          color: #7a6f60;
+                        "
+                      >
+                        A calm daily word-connection puzzle. Link words by their hidden meanings,
+                        climb a small daily ladder.
+                      </p>
+                      <div style="display: flex; gap: 10px; font-size: 12px; color: #9a8c78">
+                        <span
+                          style="border: 1px solid #e4d9c5; border-radius: 999px; padding: 4px 11px"
+                          >iOS</span
+                        ><span
+                          style="border: 1px solid #e4d9c5; border-radius: 999px; padding: 4px 11px"
+                          >Android</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      style="
+                        flex: none;
+                        width: 118px;
+                        background: #2a241d;
+                        border-radius: 14px;
+                        padding: 14px 12px;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 7px;
+                        justify-content: center;
+                      "
+                    >
+                      <div
+                        style="
+                          text-align: center;
+                          font-size: 9px;
+                          letter-spacing: 0.16em;
+                          text-transform: uppercase;
+                          color: #a9805a;
+                          margin-bottom: 3px;
+                        "
+                      >
+                        Today
+                      </div>
+                      <div
+                        style="
+                          background: #3a322a;
+                          border-radius: 7px;
+                          padding: 7px;
+                          text-align: center;
+                          font-size: 12px;
+                          font-weight: 600;
+                          color: #fbf3e8;
+                        "
+                      >
+                        OCEAN
+                      </div>
+                      <div
+                        style="
+                          text-align: center;
+                          color: #c2542f;
+                          font-size: 10px;
+                          line-height: 0.6;
+                        "
+                      >
+                        •
+                      </div>
+                      <div
+                        style="
+                          background: #3a322a;
+                          border-radius: 7px;
+                          padding: 7px;
+                          text-align: center;
+                          font-size: 12px;
+                          font-weight: 600;
+                          color: #fbf3e8;
+                        "
+                      >
+                        BLUE
+                      </div>
+                      <div
+                        style="
+                          text-align: center;
+                          color: #c2542f;
+                          font-size: 10px;
+                          line-height: 0.6;
+                        "
+                      >
+                        •
+                      </div>
+                      <div
+                        style="
+                          background: #c2542f;
+                          border-radius: 7px;
+                          padding: 7px;
+                          text-align: center;
+                          font-size: 12px;
+                          font-weight: 700;
+                          color: #fbf3e8;
+                        "
+                      >
+                        PRINT
+                      </div>
+                      <div
+                        style="
+                          text-align: center;
+                          color: #6b5f50;
+                          font-size: 10px;
+                          line-height: 0.6;
+                        "
+                      >
+                        •
+                      </div>
+                      <div
+                        style="
+                          background: transparent;
+                          border: 1px dashed #6b5f50;
+                          border-radius: 7px;
+                          padding: 7px;
+                          text-align: center;
+                          font-size: 12px;
+                          color: #8a7d6b;
+                        "
+                      >
+                        ? ? ? ?
+                      </div>
+                    </div>
+                  </div>
+                  <!-- itwyit -->
+                  <div
+                    style="
+                      background: #fcf8f0;
+                      border: 1px solid #e4d9c5;
+                      border-radius: 18px;
+                      padding: 26px;
+                      display: flex;
+                      gap: 24px;
+                    "
+                  >
+                    <div style="flex: 1">
+                      <span
+                        style="
+                          font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                          font-weight: 600;
+                          font-size: 21px;
+                          color: #2a241d;
+                        "
+                        >itwyit</span
+                      >
+                      <p
+                        style="
+                          margin: 8px 0 16px;
+                          font-size: 14.5px;
+                          line-height: 1.5;
+                          color: #7a6f60;
+                        "
+                      >
+                        A private space for two people to compare notes — only mutual yeses are ever
+                        shared. No accounts, no shame.
+                      </p>
+                      <div style="display: flex; gap: 10px; font-size: 12px; color: #9a8c78">
+                        <span
+                          style="border: 1px solid #e4d9c5; border-radius: 999px; padding: 4px 11px"
+                          >On the web</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      style="
+                        flex: none;
+                        width: 118px;
+                        background: #fff;
+                        border: 1px solid #e4d9c5;
+                        border-radius: 14px;
+                        padding: 13px 11px;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;
+                        justify-content: center;
+                      "
+                    >
+                      <div
+                        style="
+                          display: flex;
+                          justify-content: space-between;
+                          font-size: 9px;
+                          letter-spacing: 0.1em;
+                          text-transform: uppercase;
+                          color: #9a8c78;
+                        "
+                      >
+                        <span>You</span><span>Them</span>
+                      </div>
+                      <div
+                        style="display: flex; justify-content: space-between; align-items: center"
+                      >
+                        <span
+                          style="width: 13px; height: 13px; border-radius: 50%; background: #c2542f"
+                        ></span
+                        ><span
+                          style="width: 13px; height: 13px; border-radius: 50%; background: #c2542f"
+                        ></span>
+                      </div>
+                      <div
+                        style="
+                          text-align: center;
+                          font-size: 9.5px;
+                          font-weight: 600;
+                          color: #c2542f;
+                          background: #f7e7df;
+                          border-radius: 6px;
+                          padding: 3px;
+                        "
+                      >
+                        a match
+                      </div>
+                      <div
+                        style="display: flex; justify-content: space-between; align-items: center"
+                      >
+                        <span
+                          style="width: 13px; height: 13px; border-radius: 50%; background: #c2542f"
+                        ></span
+                        ><span
+                          style="
+                            width: 13px;
+                            height: 13px;
+                            border-radius: 50%;
+                            border: 1.5px solid #d9cdb8;
+                          "
+                        ></span>
+                      </div>
+                      <div
+                        style="display: flex; justify-content: space-between; align-items: center"
+                      >
+                        <span
+                          style="
+                            width: 13px;
+                            height: 13px;
+                            border-radius: 50%;
+                            border: 1.5px solid #d9cdb8;
+                          "
+                        ></span
+                        ><span
+                          style="width: 13px; height: 13px; border-radius: 50%; background: #c2542f"
+                        ></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- and we invest -->
+              <div
+                style="
+                  margin-top: 40px;
+                  padding: 26px 46px 40px;
+                  border-top: 1px solid #e4d9c5;
+                  display: flex;
+                  align-items: center;
+                  gap: 22px;
+                "
+              >
+                <span style="flex: none; font-size: 14.5px; color: #7a6f60; max-width: 180px"
+                  >…and we've backed <strong style="color: #2a241d">18 founders</strong> we believe
+                  in.</span
+                >
+                <div
+                  class="logo-strip"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 34px;
+                    flex: 1;
+                    justify-content: space-around;
+                  "
+                >
+                  <img src="assets/dope-logo.svg" alt="Dope" /><img
+                    src="assets/wer1-logo.svg"
+                    alt="WeR1"
+                  /><img src="assets/didx-logo.svg" alt="DIDX" /><img
+                    src="assets/inves-logo.svg"
+                    alt="Inv.es"
+                  /><img src="assets/frsh-minds-logo.svg" alt="Frsh Minds" />
+                </div>
+                <a
+                  href="#"
+                  style="
+                    flex: none;
+                    font-size: 14px;
+                    color: #c2542f;
+                    font-weight: 600;
+                    text-decoration: none;
+                  "
+                  >See all →</a
+                >
               </div>
             </div>
-            <!-- itwyit -->
-            <div style="background:#fcf8f0;border:1px solid #e4d9c5;border-radius:18px;padding:26px;display:flex;gap:24px">
-              <div style="flex:1">
-                <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:21px;color:#2a241d">itwyit</span>
-                <p style="margin:8px 0 16px;font-size:14.5px;line-height:1.5;color:#7a6f60">A private space for two people to compare notes — only mutual yeses are ever shared. No accounts, no shame.</p>
-                <div style="display:flex;gap:10px;font-size:12px;color:#9a8c78"><span style="border:1px solid #e4d9c5;border-radius:999px;padding:4px 11px">On the web</span></div>
+          </div>
+
+          <!-- ============ 3b — PROJECTS-LED (builder first) ============ -->
+          <div class="dv-opt" id="3b">
+            <div class="dv-olabel">
+              <a class="dv-oid" href="#3b">3b</a>Builder-first — lead with the product, investing
+              comes after
+            </div>
+            <div
+              class="dv-card"
+              style="
+                width: 1180px;
+                background: #f3ebdd;
+                font-family: &quot;Hanken Grotesk&quot;, sans-serif;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  padding: 24px 46px;
+                "
+              >
+                <div style="display: flex; align-items: center; gap: 10px">
+                  <svg
+                    viewBox="0 0 24 22"
+                    width="19"
+                    height="18"
+                    fill="none"
+                    style="color: #c2542f"
+                  >
+                    <path
+                      d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span
+                    style="
+                      font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                      font-weight: 600;
+                      font-size: 20px;
+                      letter-spacing: -0.01em;
+                      color: #2a241d;
+                    "
+                    >LSD Capital</span
+                  >
+                </div>
+                <div style="display: flex; gap: 30px; font-size: 14.5px; color: #7a6f60">
+                  <span>What we build</span><span>Who we back</span><span>Community</span>
+                </div>
+                <a
+                  href="mailto:hello@lsd.capital"
+                  style="
+                    background: #2a241d;
+                    color: #f3ebdd;
+                    padding: 11px 22px;
+                    border-radius: 999px;
+                    font-size: 13.5px;
+                    font-weight: 500;
+                    text-decoration: none;
+                  "
+                  >Say hello</a
+                >
               </div>
-              <div style="flex:none;width:118px;background:#fff;border:1px solid #e4d9c5;border-radius:14px;padding:13px 11px;display:flex;flex-direction:column;gap:8px;justify-content:center">
-                <div style="display:flex;justify-content:space-between;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#9a8c78"><span>You</span><span>Them</span></div>
-                <div style="display:flex;justify-content:space-between;align-items:center"><span style="width:13px;height:13px;border-radius:50%;background:#c2542f"></span><span style="width:13px;height:13px;border-radius:50%;background:#c2542f"></span></div>
-                <div style="text-align:center;font-size:9.5px;font-weight:600;color:#c2542f;background:#f7e7df;border-radius:6px;padding:3px">a match</div>
-                <div style="display:flex;justify-content:space-between;align-items:center"><span style="width:13px;height:13px;border-radius:50%;background:#c2542f"></span><span style="width:13px;height:13px;border-radius:50%;border:1.5px solid #d9cdb8"></span></div>
-                <div style="display:flex;justify-content:space-between;align-items:center"><span style="width:13px;height:13px;border-radius:50%;border:1.5px solid #d9cdb8"></span><span style="width:13px;height:13px;border-radius:50%;background:#c2542f"></span></div>
+              <div style="padding: 54px 46px 0">
+                <p style="margin: 0 0 18px; font-size: 15px; color: #9a8c78">
+                  We make things. Sometimes we fund them.
+                </p>
+                <h1
+                  style="
+                    margin: 0 0 44px;
+                    font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                    font-weight: 600;
+                    font-size: 64px;
+                    line-height: 1.02;
+                    letter-spacing: -0.03em;
+                    color: #2a241d;
+                    max-width: 840px;
+                  "
+                >
+                  A small studio shipping <span style="color: #c2542f">calm, useful things.</span>
+                </h1>
+              </div>
+              <!-- big LinkiDink feature -->
+              <div
+                style="
+                  margin: 0 46px;
+                  background: #2a241d;
+                  border-radius: 22px;
+                  padding: 46px;
+                  display: grid;
+                  grid-template-columns: 1fr 280px;
+                  gap: 40px;
+                  align-items: center;
+                "
+              >
+                <div>
+                  <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px">
+                    <img
+                      src="assets/linkidink-logo.png"
+                      alt=""
+                      style="height: 26px; width: auto; filter: brightness(0) invert(1)"
+                    /><span
+                      style="
+                        font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                        font-weight: 600;
+                        font-size: 26px;
+                        color: #fbf3e8;
+                      "
+                      >LinkiDink</span
+                    >
+                  </div>
+                  <h2
+                    style="
+                      margin: 0 0 14px;
+                      font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                      font-weight: 500;
+                      font-size: 34px;
+                      line-height: 1.1;
+                      color: #fbf3e8;
+                      max-width: 430px;
+                    "
+                  >
+                    A daily word puzzle that doesn't want your whole day.
+                  </h2>
+                  <p
+                    style="
+                      margin: 0 0 26px;
+                      font-size: 16px;
+                      line-height: 1.55;
+                      color: #b7ab98;
+                      max-width: 420px;
+                    "
+                  >
+                    Link words by their hidden meanings, climb a small daily ladder, share with
+                    friends. An experiment in what a calm game can feel like.
+                  </p>
+                  <div style="display: flex; gap: 12px">
+                    <a
+                      href="#"
+                      style="
+                        background: #c2542f;
+                        color: #fbf3e8;
+                        padding: 12px 22px;
+                        border-radius: 999px;
+                        font-size: 14px;
+                        font-weight: 600;
+                        text-decoration: none;
+                      "
+                      >App Store</a
+                    ><a
+                      href="#"
+                      style="
+                        border: 1px solid #4a4138;
+                        color: #fbf3e8;
+                        padding: 12px 22px;
+                        border-radius: 999px;
+                        font-size: 14px;
+                        font-weight: 600;
+                        text-decoration: none;
+                      "
+                      >Google Play</a
+                    >
+                  </div>
+                </div>
+                <div
+                  style="
+                    justify-self: center;
+                    width: 200px;
+                    background: #1d1812;
+                    border: 6px solid #000;
+                    border-radius: 30px;
+                    padding: 20px 16px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 9px;
+                  "
+                >
+                  <div
+                    style="
+                      text-align: center;
+                      font-size: 10px;
+                      letter-spacing: 0.16em;
+                      text-transform: uppercase;
+                      color: #a9805a;
+                      margin-bottom: 4px;
+                    "
+                  >
+                    Puzzle №412
+                  </div>
+                  <div
+                    style="
+                      background: #322a22;
+                      border-radius: 9px;
+                      padding: 11px;
+                      text-align: center;
+                      font-size: 15px;
+                      font-weight: 600;
+                      color: #fbf3e8;
+                    "
+                  >
+                    FIRE
+                  </div>
+                  <div
+                    style="text-align: center; color: #c2542f; font-size: 13px; line-height: 0.5"
+                  >
+                    •
+                  </div>
+                  <div
+                    style="
+                      background: #322a22;
+                      border-radius: 9px;
+                      padding: 11px;
+                      text-align: center;
+                      font-size: 15px;
+                      font-weight: 600;
+                      color: #fbf3e8;
+                    "
+                  >
+                    WORK
+                  </div>
+                  <div
+                    style="text-align: center; color: #c2542f; font-size: 13px; line-height: 0.5"
+                  >
+                    •
+                  </div>
+                  <div
+                    style="
+                      background: #c2542f;
+                      border-radius: 9px;
+                      padding: 11px;
+                      text-align: center;
+                      font-size: 15px;
+                      font-weight: 700;
+                      color: #fbf3e8;
+                    "
+                  >
+                    SHOP
+                  </div>
+                  <div
+                    style="text-align: center; color: #6b5f50; font-size: 13px; line-height: 0.5"
+                  >
+                    •
+                  </div>
+                  <div
+                    style="
+                      border: 1.5px dashed #6b5f50;
+                      border-radius: 9px;
+                      padding: 11px;
+                      text-align: center;
+                      font-size: 15px;
+                      color: #8a7d6b;
+                    "
+                  >
+                    ? ? ? ?
+                  </div>
+                </div>
+              </div>
+              <!-- itwyit + investing row -->
+              <div
+                style="
+                  padding: 30px 46px 44px;
+                  display: grid;
+                  grid-template-columns: 1fr 1fr;
+                  gap: 24px;
+                "
+              >
+                <div
+                  style="
+                    background: #fcf8f0;
+                    border: 1px solid #e4d9c5;
+                    border-radius: 18px;
+                    padding: 26px;
+                  "
+                >
+                  <span
+                    style="
+                      font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                      font-weight: 600;
+                      font-size: 20px;
+                      color: #2a241d;
+                    "
+                    >itwyit</span
+                  >
+                  <p
+                    style="margin: 8px 0 14px; font-size: 14.5px; line-height: 1.5; color: #7a6f60"
+                  >
+                    A private space for two people to compare notes — only mutual yeses are shared.
+                  </p>
+                  <a
+                    href="#"
+                    style="font-size: 14px; color: #c2542f; font-weight: 600; text-decoration: none"
+                    >Visit →</a
+                  >
+                </div>
+                <div
+                  style="
+                    background: #fcf8f0;
+                    border: 1px solid #e4d9c5;
+                    border-radius: 18px;
+                    padding: 26px;
+                  "
+                >
+                  <span
+                    style="
+                      font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                      font-weight: 600;
+                      font-size: 20px;
+                      color: #2a241d;
+                    "
+                    >…and we invest</span
+                  >
+                  <p
+                    style="margin: 8px 0 14px; font-size: 14.5px; line-height: 1.5; color: #7a6f60"
+                  >
+                    18 tech founders we believe in, across Africa &amp; beyond.
+                  </p>
+                  <a
+                    href="#"
+                    style="font-size: 14px; color: #c2542f; font-weight: 600; text-decoration: none"
+                    >See the portfolio →</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============ 3c — THREE PURSUITS, PROJECTS FIRST ============ -->
+          <div class="dv-opt" id="3c">
+            <div class="dv-olabel">
+              <a class="dv-oid" href="#3c">3c</a>One overview — three pursuits, projects listed
+              first
+            </div>
+            <div
+              class="dv-card"
+              style="
+                width: 1180px;
+                background: #f3ebdd;
+                font-family: &quot;Hanken Grotesk&quot;, sans-serif;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  padding: 24px 46px;
+                "
+              >
+                <div style="display: flex; align-items: center; gap: 10px">
+                  <svg
+                    viewBox="0 0 24 22"
+                    width="19"
+                    height="18"
+                    fill="none"
+                    style="color: #c2542f"
+                  >
+                    <path
+                      d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span
+                    style="
+                      font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                      font-weight: 600;
+                      font-size: 20px;
+                      letter-spacing: -0.01em;
+                      color: #2a241d;
+                    "
+                    >LSD Capital</span
+                  >
+                </div>
+                <div style="display: flex; gap: 30px; font-size: 14.5px; color: #7a6f60">
+                  <span>What we build</span><span>Who we back</span><span>Community</span>
+                </div>
+                <a
+                  href="mailto:hello@lsd.capital"
+                  style="
+                    background: #2a241d;
+                    color: #f3ebdd;
+                    padding: 11px 22px;
+                    border-radius: 999px;
+                    font-size: 13.5px;
+                    font-weight: 500;
+                    text-decoration: none;
+                  "
+                  >Say hello</a
+                >
+              </div>
+              <div style="padding: 60px 46px 40px">
+                <h1
+                  style="
+                    margin: 0;
+                    font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                    font-weight: 600;
+                    font-size: 72px;
+                    line-height: 1;
+                    letter-spacing: -0.035em;
+                    color: #2a241d;
+                    max-width: 860px;
+                  "
+                >
+                  We build, we back, <span style="color: #c2542f">we show up.</span>
+                </h1>
+                <p
+                  style="
+                    margin: 24px 0 0;
+                    font-size: 20px;
+                    line-height: 1.55;
+                    color: #6f6456;
+                    max-width: 560px;
+                  "
+                >
+                  Three things, all from the same instinct — putting heart, time, and capital behind
+                  work that matters.
+                </p>
+              </div>
+              <!-- 01 build -->
+              <div style="padding: 0 46px">
+                <div
+                  style="
+                    border-top: 1px solid #2a241d;
+                    display: grid;
+                    grid-template-columns: 80px 1fr;
+                    gap: 28px;
+                    padding: 34px 0;
+                  "
+                >
+                  <span
+                    style="
+                      font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                      font-weight: 600;
+                      font-size: 30px;
+                      color: #c8bca6;
+                    "
+                    >01</span
+                  >
+                  <div>
+                    <div
+                      style="
+                        display: flex;
+                        align-items: baseline;
+                        justify-content: space-between;
+                        margin-bottom: 18px;
+                      "
+                    >
+                      <h2
+                        style="
+                          margin: 0;
+                          font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                          font-weight: 600;
+                          font-size: 32px;
+                          color: #2a241d;
+                        "
+                      >
+                        What we build
+                      </h2>
+                      <span style="font-size: 14px; color: #9a8c78">Our own products</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px">
+                      <div
+                        style="
+                          background: #fcf8f0;
+                          border: 1px solid #e4d9c5;
+                          border-radius: 16px;
+                          padding: 20px;
+                          display: flex;
+                          align-items: center;
+                          gap: 14px;
+                        "
+                      >
+                        <img
+                          src="assets/linkidink-logo.png"
+                          alt=""
+                          style="height: 30px; width: auto"
+                        />
+                        <div>
+                          <div
+                            style="
+                              font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                              font-weight: 600;
+                              font-size: 18px;
+                              color: #2a241d;
+                            "
+                          >
+                            LinkiDink
+                          </div>
+                          <div style="font-size: 13.5px; color: #7a6f60">
+                            A daily word-connection puzzle · iOS &amp; Android
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        style="
+                          background: #fcf8f0;
+                          border: 1px solid #e4d9c5;
+                          border-radius: 16px;
+                          padding: 20px;
+                          display: flex;
+                          align-items: center;
+                          gap: 14px;
+                        "
+                      >
+                        <div
+                          style="
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 8px;
+                            background: #2a241d;
+                            color: #fbf3e8;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                            font-weight: 600;
+                            font-size: 15px;
+                          "
+                        >
+                          it
+                        </div>
+                        <div>
+                          <div
+                            style="
+                              font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                              font-weight: 600;
+                              font-size: 18px;
+                              color: #2a241d;
+                            "
+                          >
+                            itwyit
+                          </div>
+                          <div style="font-size: 13.5px; color: #7a6f60">
+                            A private space for two · On the web
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 02 back -->
+                <div
+                  style="
+                    border-top: 1px solid #e4d9c5;
+                    display: grid;
+                    grid-template-columns: 80px 1fr;
+                    gap: 28px;
+                    padding: 34px 0;
+                  "
+                >
+                  <span
+                    style="
+                      font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                      font-weight: 600;
+                      font-size: 30px;
+                      color: #c8bca6;
+                    "
+                    >02</span
+                  >
+                  <div>
+                    <div
+                      style="
+                        display: flex;
+                        align-items: baseline;
+                        justify-content: space-between;
+                        margin-bottom: 18px;
+                      "
+                    >
+                      <h2
+                        style="
+                          margin: 0;
+                          font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                          font-weight: 600;
+                          font-size: 32px;
+                          color: #2a241d;
+                        "
+                      >
+                        Who we back
+                      </h2>
+                      <span style="font-size: 14px; color: #9a8c78">18 founders</span>
+                    </div>
+                    <div
+                      class="logo-strip"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        gap: 34px;
+                        justify-content: space-between;
+                      "
+                    >
+                      <img src="assets/dope-logo.svg" alt="" /><img
+                        src="assets/wer1-logo.svg"
+                        alt=""
+                      /><img src="assets/didx-logo.svg" alt="" /><img
+                        src="assets/inves-logo.svg"
+                        alt=""
+                      /><img src="assets/frsh-minds-logo.svg" alt="" />
+                    </div>
+                  </div>
+                </div>
+                <!-- 03 community -->
+                <div
+                  style="
+                    border-top: 1px solid #e4d9c5;
+                    display: grid;
+                    grid-template-columns: 80px 1fr;
+                    gap: 28px;
+                    padding: 34px 0 50px;
+                  "
+                >
+                  <span
+                    style="
+                      font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                      font-weight: 600;
+                      font-size: 30px;
+                      color: #c8bca6;
+                    "
+                    >03</span
+                  >
+                  <div>
+                    <div
+                      style="
+                        display: flex;
+                        align-items: baseline;
+                        justify-content: space-between;
+                        margin-bottom: 10px;
+                      "
+                    >
+                      <h2
+                        style="
+                          margin: 0;
+                          font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                          font-weight: 600;
+                          font-size: 32px;
+                          color: #2a241d;
+                        "
+                      >
+                        Where we show up
+                      </h2>
+                      <span style="font-size: 14px; color: #9a8c78">Beyond capital</span>
+                    </div>
+                    <p
+                      style="
+                        margin: 0;
+                        font-size: 16px;
+                        line-height: 1.55;
+                        color: #7a6f60;
+                        max-width: 560px;
+                      "
+                    >
+                      Our theme camp at Afrikaburn, and other initiatives we help bring to life each
+                      year.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- and we invest -->
-        <div style="margin-top:40px;padding:26px 46px 40px;border-top:1px solid #e4d9c5;display:flex;align-items:center;gap:22px">
-          <span style="flex:none;font-size:14.5px;color:#7a6f60;max-width:180px">…and we've backed <strong style="color:#2a241d">18 founders</strong> we believe in.</span>
-          <div class="logo-strip" style="display:flex;align-items:center;gap:34px;flex:1;justify-content:space-around">
-            <img src="assets/dope-logo.svg" alt="Dope"><img src="assets/wer1-logo.svg" alt="WeR1"><img src="assets/didx-logo.svg" alt="DIDX"><img src="assets/inves-logo.svg" alt="Inv.es"><img src="assets/frsh-minds-logo.svg" alt="Frsh Minds">
-          </div>
-          <a href="#" style="flex:none;font-size:14px;color:#c2542f;font-weight:600;text-decoration:none">See all →</a>
-        </div>
-      </div>
-    </div>
+        <p class="dv-next">
+          Try next: "go with <a class="dv-oid" href="#3a">3a</a>, build the full site" · "make
+          <a class="dv-oid" href="#3b">3b</a> the homepage and give projects their own page" · "the
+          LinkiDink mock should match the real game" · "blend
+          <a class="dv-oid" href="#3a">3a</a> hero with <a class="dv-oid" href="#3c">3c</a>'s
+          overview"
+        </p>
+      </section>
 
-    <!-- ============ 3b — PROJECTS-LED (builder first) ============ -->
-    <div class="dv-opt" id="3b">
-      <div class="dv-olabel"><a class="dv-oid" href="#3b">3b</a>Builder-first — lead with the product, investing comes after</div>
-      <div class="dv-card" style="width:1180px;background:#f3ebdd;font-family:'Hanken Grotesk',sans-serif">
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:24px 46px">
-          <div style="display:flex;align-items:center;gap:10px">
-            <svg viewBox="0 0 24 22" width="19" height="18" fill="none" style="color:#c2542f"><path d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-.01em;color:#2a241d">LSD Capital</span>
-          </div>
-          <div style="display:flex;gap:30px;font-size:14.5px;color:#7a6f60"><span>What we build</span><span>Who we back</span><span>Community</span></div>
-          <a href="mailto:hello@lsd.capital" style="background:#2a241d;color:#f3ebdd;padding:11px 22px;border-radius:999px;font-size:13.5px;font-weight:500;text-decoration:none">Say hello</a>
+      <section class="dv-turn" id="t2">
+        <div class="dv-thd">
+          <a class="dv-tid" href="#t2">2</a
+          ><span class="dv-tname"
+            >Warmer &amp; more human — riffs on <a class="dv-oid" href="#1b">1b</a>, less editorial,
+            less investor-speak</span
+          >
         </div>
-        <div style="padding:54px 46px 0">
-          <p style="margin:0 0 18px;font-size:15px;color:#9a8c78">We make things. Sometimes we fund them.</p>
-          <h1 style="margin:0 0 44px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:64px;line-height:1.02;letter-spacing:-.03em;color:#2a241d;max-width:840px">A small studio shipping <span style="color:#c2542f">calm, useful things.</span></h1>
-        </div>
-        <!-- big LinkiDink feature -->
-        <div style="margin:0 46px;background:#2a241d;border-radius:22px;padding:46px;display:grid;grid-template-columns:1fr 280px;gap:40px;align-items:center">
-          <div>
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px"><img src="assets/linkidink-logo.png" alt="" style="height:26px;width:auto;filter:brightness(0) invert(1)"><span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:26px;color:#fbf3e8">LinkiDink</span></div>
-            <h2 style="margin:0 0 14px;font-family:'Bricolage Grotesque',sans-serif;font-weight:500;font-size:34px;line-height:1.1;color:#fbf3e8;max-width:430px">A daily word puzzle that doesn't want your whole day.</h2>
-            <p style="margin:0 0 26px;font-size:16px;line-height:1.55;color:#b7ab98;max-width:420px">Link words by their hidden meanings, climb a small daily ladder, share with friends. An experiment in what a calm game can feel like.</p>
-            <div style="display:flex;gap:12px"><a href="#" style="background:#c2542f;color:#fbf3e8;padding:12px 22px;border-radius:999px;font-size:14px;font-weight:600;text-decoration:none">App Store</a><a href="#" style="border:1px solid #4a4138;color:#fbf3e8;padding:12px 22px;border-radius:999px;font-size:14px;font-weight:600;text-decoration:none">Google Play</a></div>
-          </div>
-          <div style="justify-self:center;width:200px;background:#1d1812;border:6px solid #000;border-radius:30px;padding:20px 16px;display:flex;flex-direction:column;gap:9px">
-            <div style="text-align:center;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#a9805a;margin-bottom:4px">Puzzle №412</div>
-            <div style="background:#322a22;border-radius:9px;padding:11px;text-align:center;font-size:15px;font-weight:600;color:#fbf3e8">FIRE</div>
-            <div style="text-align:center;color:#c2542f;font-size:13px;line-height:.5">•</div>
-            <div style="background:#322a22;border-radius:9px;padding:11px;text-align:center;font-size:15px;font-weight:600;color:#fbf3e8">WORK</div>
-            <div style="text-align:center;color:#c2542f;font-size:13px;line-height:.5">•</div>
-            <div style="background:#c2542f;border-radius:9px;padding:11px;text-align:center;font-size:15px;font-weight:700;color:#fbf3e8">SHOP</div>
-            <div style="text-align:center;color:#6b5f50;font-size:13px;line-height:.5">•</div>
-            <div style="border:1.5px dashed #6b5f50;border-radius:9px;padding:11px;text-align:center;font-size:15px;color:#8a7d6b">? ? ? ?</div>
-          </div>
-        </div>
-        <!-- itwyit + investing row -->
-        <div style="padding:30px 46px 44px;display:grid;grid-template-columns:1fr 1fr;gap:24px">
-          <div style="background:#fcf8f0;border:1px solid #e4d9c5;border-radius:18px;padding:26px">
-            <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;color:#2a241d">itwyit</span>
-            <p style="margin:8px 0 14px;font-size:14.5px;line-height:1.5;color:#7a6f60">A private space for two people to compare notes — only mutual yeses are shared.</p>
-            <a href="#" style="font-size:14px;color:#c2542f;font-weight:600;text-decoration:none">Visit →</a>
-          </div>
-          <div style="background:#fcf8f0;border:1px solid #e4d9c5;border-radius:18px;padding:26px">
-            <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;color:#2a241d">…and we invest</span>
-            <p style="margin:8px 0 14px;font-size:14.5px;line-height:1.5;color:#7a6f60">18 tech founders we believe in, across Africa &amp; beyond.</p>
-            <a href="#" style="font-size:14px;color:#c2542f;font-weight:600;text-decoration:none">See the portfolio →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ============ 3c — THREE PURSUITS, PROJECTS FIRST ============ -->
-    <div class="dv-opt" id="3c">
-      <div class="dv-olabel"><a class="dv-oid" href="#3c">3c</a>One overview — three pursuits, projects listed first</div>
-      <div class="dv-card" style="width:1180px;background:#f3ebdd;font-family:'Hanken Grotesk',sans-serif">
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:24px 46px">
-          <div style="display:flex;align-items:center;gap:10px">
-            <svg viewBox="0 0 24 22" width="19" height="18" fill="none" style="color:#c2542f"><path d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-.01em;color:#2a241d">LSD Capital</span>
-          </div>
-          <div style="display:flex;gap:30px;font-size:14.5px;color:#7a6f60"><span>What we build</span><span>Who we back</span><span>Community</span></div>
-          <a href="mailto:hello@lsd.capital" style="background:#2a241d;color:#f3ebdd;padding:11px 22px;border-radius:999px;font-size:13.5px;font-weight:500;text-decoration:none">Say hello</a>
-        </div>
-        <div style="padding:60px 46px 40px">
-          <h1 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:72px;line-height:1;letter-spacing:-.035em;color:#2a241d;max-width:860px">We build, we back, <span style="color:#c2542f">we show up.</span></h1>
-          <p style="margin:24px 0 0;font-size:20px;line-height:1.55;color:#6f6456;max-width:560px">Three things, all from the same instinct — putting heart, time, and capital behind work that matters.</p>
-        </div>
-        <!-- 01 build -->
-        <div style="padding:0 46px">
-          <div style="border-top:1px solid #2a241d;display:grid;grid-template-columns:80px 1fr;gap:28px;padding:34px 0">
-            <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:30px;color:#c8bca6">01</span>
-            <div>
-              <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px"><h2 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;color:#2a241d">What we build</h2><span style="font-size:14px;color:#9a8c78">Our own products</span></div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
-                <div style="background:#fcf8f0;border:1px solid #e4d9c5;border-radius:16px;padding:20px;display:flex;align-items:center;gap:14px"><img src="assets/linkidink-logo.png" alt="" style="height:30px;width:auto"><div><div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:18px;color:#2a241d">LinkiDink</div><div style="font-size:13.5px;color:#7a6f60">A daily word-connection puzzle · iOS &amp; Android</div></div></div>
-                <div style="background:#fcf8f0;border:1px solid #e4d9c5;border-radius:16px;padding:20px;display:flex;align-items:center;gap:14px"><div style="width:30px;height:30px;border-radius:8px;background:#2a241d;color:#fbf3e8;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:15px">it</div><div><div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:18px;color:#2a241d">itwyit</div><div style="font-size:13.5px;color:#7a6f60">A private space for two · On the web</div></div></div>
+        <div class="dv-opts">
+          <!-- ============ 2a — WARM SAND ============ -->
+          <div class="dv-opt" id="2a">
+            <div class="dv-olabel">
+              <a class="dv-oid" href="#2a">2a</a>Warm sand — "we back people, not pitch decks"
+            </div>
+            <div
+              class="dv-card"
+              style="
+                width: 1180px;
+                background: #f3ebdd;
+                font-family: &quot;Hanken Grotesk&quot;, sans-serif;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  padding: 24px 46px;
+                "
+              >
+                <div style="display: flex; align-items: center; gap: 10px">
+                  <svg
+                    viewBox="0 0 24 22"
+                    width="19"
+                    height="18"
+                    fill="none"
+                    style="color: #c2542f"
+                  >
+                    <path
+                      d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <span
+                    style="
+                      font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                      font-weight: 600;
+                      font-size: 20px;
+                      letter-spacing: -0.01em;
+                      color: #2a241d;
+                    "
+                    >LSD Capital</span
+                  >
+                </div>
+                <div style="display: flex; gap: 30px; font-size: 14.5px; color: #7a6f60">
+                  <span>Who we back</span><span>What we build</span><span>Community</span>
+                </div>
+                <a
+                  href="mailto:hello@lsd.capital"
+                  style="
+                    background: #2a241d;
+                    color: #f3ebdd;
+                    padding: 11px 22px;
+                    border-radius: 999px;
+                    font-size: 13.5px;
+                    font-weight: 500;
+                    text-decoration: none;
+                  "
+                  >Say hello</a
+                >
+              </div>
+              <div style="padding: 74px 46px 0">
+                <p style="margin: 0 0 22px; font-size: 15px; color: #9a8c78">
+                  Cape Town &amp; Mahé — since 2024
+                </p>
+                <h1
+                  style="
+                    margin: 0;
+                    font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                    font-weight: 600;
+                    font-size: 90px;
+                    line-height: 0.98;
+                    letter-spacing: -0.035em;
+                    color: #2a241d;
+                    max-width: 980px;
+                  "
+                >
+                  We back people, <span style="color: #c2542f">not pitch decks.</span>
+                </h1>
+                <p
+                  style="
+                    margin: 30px 0 0;
+                    font-size: 21px;
+                    line-height: 1.55;
+                    color: #6f6456;
+                    max-width: 610px;
+                  "
+                >
+                  A small group of us putting heart, time, and a bit of money behind founders we
+                  genuinely believe in — and quietly building a few things of our own.
+                </p>
+                <div style="display: flex; align-items: center; gap: 22px; margin-top: 38px">
+                  <a
+                    href="mailto:hello@lsd.capital"
+                    style="
+                      background: #c2542f;
+                      color: #fbf3e8;
+                      padding: 14px 28px;
+                      border-radius: 999px;
+                      font-size: 15px;
+                      font-weight: 600;
+                      text-decoration: none;
+                    "
+                    >Start a conversation</a
+                  >
+                  <span style="font-size: 15px; color: #9a8c78"
+                    >or just write — hello@lsd.capital</span
+                  >
+                </div>
+              </div>
+              <div
+                style="
+                  margin-top: 72px;
+                  padding: 34px 46px 50px;
+                  border-top: 1px solid #e4d9c5;
+                  display: grid;
+                  grid-template-columns: repeat(3, 1fr);
+                  gap: 40px;
+                "
+              >
+                <div>
+                  <h3
+                    style="
+                      margin: 0 0 7px;
+                      font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                      font-weight: 600;
+                      font-size: 21px;
+                      color: #2a241d;
+                    "
+                  >
+                    Heart-led, literally
+                  </h3>
+                  <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #7a6f60">
+                    If we don't love the people and the problem, we pass. No exceptions.
+                  </p>
+                </div>
+                <div>
+                  <h3
+                    style="
+                      margin: 0 0 7px;
+                      font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                      font-weight: 600;
+                      font-size: 21px;
+                      color: #2a241d;
+                    "
+                  >
+                    Hands on the rope
+                  </h3>
+                  <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #7a6f60">
+                    Intros, late-night calls, the boring operational stuff. We show up.
+                  </p>
+                </div>
+                <div>
+                  <h3
+                    style="
+                      margin: 0 0 7px;
+                      font-family: &quot;Bricolage Grotesque&quot;, sans-serif;
+                      font-weight: 600;
+                      font-size: 21px;
+                      color: #2a241d;
+                    "
+                  >
+                    In for the long middle
+                  </h3>
+                  <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #7a6f60">
+                    The unglamorous years between the press release and the outcome.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-          <!-- 02 back -->
-          <div style="border-top:1px solid #e4d9c5;display:grid;grid-template-columns:80px 1fr;gap:28px;padding:34px 0">
-            <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:30px;color:#c8bca6">02</span>
-            <div>
-              <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px"><h2 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;color:#2a241d">Who we back</h2><span style="font-size:14px;color:#9a8c78">18 founders</span></div>
-              <div class="logo-strip" style="display:flex;align-items:center;gap:34px;justify-content:space-between"><img src="assets/dope-logo.svg" alt=""><img src="assets/wer1-logo.svg" alt=""><img src="assets/didx-logo.svg" alt=""><img src="assets/inves-logo.svg" alt=""><img src="assets/frsh-minds-logo.svg" alt=""></div>
+
+          <!-- ============ 2b — SOFT PEACH + A FACE ============ -->
+          <div class="dv-opt" id="2b">
+            <div class="dv-olabel">
+              <a class="dv-oid" href="#2b">2b</a>Soft &amp; personal — "Hi, we're LSD", with a face
+              to it
             </div>
-          </div>
-          <!-- 03 community -->
-          <div style="border-top:1px solid #e4d9c5;display:grid;grid-template-columns:80px 1fr;gap:28px;padding:34px 0 50px">
-            <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:30px;color:#c8bca6">03</span>
-            <div>
-              <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:10px"><h2 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:32px;color:#2a241d">Where we show up</h2><span style="font-size:14px;color:#9a8c78">Beyond capital</span></div>
-              <p style="margin:0;font-size:16px;line-height:1.55;color:#7a6f60;max-width:560px">Our theme camp at Afrikaburn, and other initiatives we help bring to life each year.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-  <p class="dv-next">Try next: "go with <a class="dv-oid" href="#3a">3a</a>, build the full site" · "make <a class="dv-oid" href="#3b">3b</a> the homepage and give projects their own page" · "the LinkiDink mock should match the real game" · "blend <a class="dv-oid" href="#3a">3a</a> hero with <a class="dv-oid" href="#3c">3c</a>'s overview"</p>
-</section>
-
-<section class="dv-turn" id="t2">
-  <div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Warmer &amp; more human — riffs on <a class="dv-oid" href="#1b">1b</a>, less editorial, less investor-speak</span></div>
-  <div class="dv-opts">
-
-    <!-- ============ 2a — WARM SAND ============ -->
-    <div class="dv-opt" id="2a">
-      <div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>Warm sand — "we back people, not pitch decks"</div>
-      <div class="dv-card" style="width:1180px;background:#f3ebdd;font-family:'Hanken Grotesk',sans-serif">
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:24px 46px">
-          <div style="display:flex;align-items:center;gap:10px">
-            <svg viewBox="0 0 24 22" width="19" height="18" fill="none" style="color:#c2542f"><path d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-.01em;color:#2a241d">LSD Capital</span>
-          </div>
-          <div style="display:flex;gap:30px;font-size:14.5px;color:#7a6f60">
-            <span>Who we back</span><span>What we build</span><span>Community</span>
-          </div>
-          <a href="mailto:hello@lsd.capital" style="background:#2a241d;color:#f3ebdd;padding:11px 22px;border-radius:999px;font-size:13.5px;font-weight:500;text-decoration:none">Say hello</a>
-        </div>
-        <div style="padding:74px 46px 0">
-          <p style="margin:0 0 22px;font-size:15px;color:#9a8c78">Cape Town &amp; Mahé — since 2024</p>
-          <h1 style="margin:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:90px;line-height:.98;letter-spacing:-.035em;color:#2a241d;max-width:980px">We back people, <span style="color:#c2542f">not pitch decks.</span></h1>
-          <p style="margin:30px 0 0;font-size:21px;line-height:1.55;color:#6f6456;max-width:610px">A small group of us putting heart, time, and a bit of money behind founders we genuinely believe in — and quietly building a few things of our own.</p>
-          <div style="display:flex;align-items:center;gap:22px;margin-top:38px">
-            <a href="mailto:hello@lsd.capital" style="background:#c2542f;color:#fbf3e8;padding:14px 28px;border-radius:999px;font-size:15px;font-weight:600;text-decoration:none">Start a conversation</a>
-            <span style="font-size:15px;color:#9a8c78">or just write — hello@lsd.capital</span>
-          </div>
-        </div>
-        <div style="margin-top:72px;padding:34px 46px 50px;border-top:1px solid #e4d9c5;display:grid;grid-template-columns:repeat(3,1fr);gap:40px">
-          <div><h3 style="margin:0 0 7px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:21px;color:#2a241d">Heart-led, literally</h3><p style="margin:0;font-size:15px;line-height:1.55;color:#7a6f60">If we don't love the people and the problem, we pass. No exceptions.</p></div>
-          <div><h3 style="margin:0 0 7px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:21px;color:#2a241d">Hands on the rope</h3><p style="margin:0;font-size:15px;line-height:1.55;color:#7a6f60">Intros, late-night calls, the boring operational stuff. We show up.</p></div>
-          <div><h3 style="margin:0 0 7px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:21px;color:#2a241d">In for the long middle</h3><p style="margin:0;font-size:15px;line-height:1.55;color:#7a6f60">The unglamorous years between the press release and the outcome.</p></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ============ 2b — SOFT PEACH + A FACE ============ -->
-    <div class="dv-opt" id="2b">
-      <div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a>Soft &amp; personal — "Hi, we're LSD", with a face to it</div>
-      <div class="dv-card" style="width:1180px;background:#f7ece3;font-family:'Hanken Grotesk',sans-serif;position:relative">
-        <div style="position:absolute;top:-120px;right:-80px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(194,84,47,.12),rgba(194,84,47,0) 70%);z-index:0"></div>
-        <div style="position:relative;z-index:1">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:24px 46px">
-            <div style="display:flex;align-items:center;gap:10px">
-              <svg viewBox="0 0 24 22" width="19" height="18" fill="none" style="color:#c2542f"><path d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span style="font-family:'Hedvig Letters Serif',serif;font-size:21px;color:#2a241d">LSD Capital</span>
-            </div>
-            <div style="display:flex;gap:30px;font-size:14.5px;color:#7a6f60"><span>Who we back</span><span>What we build</span><span>Community</span></div>
-            <a href="mailto:hello@lsd.capital" style="border:1.5px solid #2a241d;color:#2a241d;padding:10px 22px;border-radius:999px;font-size:13.5px;font-weight:500;text-decoration:none">Say hello</a>
-          </div>
-          <div style="display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:54px 46px 64px">
-            <div>
-              <h1 style="margin:0;font-family:'Hedvig Letters Serif',serif;font-size:80px;line-height:1;letter-spacing:-.01em;color:#2a241d">Hi — we're LSD.</h1>
-              <p style="margin:28px 0 0;font-size:20px;line-height:1.6;color:#6f6456;max-width:480px">We put heart, time, and a little capital behind people solving real problems. Then we stick around for the long, unglamorous middle — the part that actually matters.</p>
-              <div style="display:flex;align-items:center;gap:22px;margin-top:36px">
-                <a href="mailto:hello@lsd.capital" style="background:#c2542f;color:#fbf3e8;padding:14px 28px;border-radius:999px;font-size:15px;font-weight:600;text-decoration:none">Come say hi</a>
-                <span style="font-size:15px;color:#9a8c78">hello@lsd.capital</span>
+            <div
+              class="dv-card"
+              style="
+                width: 1180px;
+                background: #f7ece3;
+                font-family: &quot;Hanken Grotesk&quot;, sans-serif;
+                position: relative;
+              "
+            >
+              <div
+                style="
+                  position: absolute;
+                  top: -120px;
+                  right: -80px;
+                  width: 480px;
+                  height: 480px;
+                  border-radius: 50%;
+                  background: radial-gradient(
+                    circle,
+                    rgba(194, 84, 47, 0.12),
+                    rgba(194, 84, 47, 0) 70%
+                  );
+                  z-index: 0;
+                "
+              ></div>
+              <div style="position: relative; z-index: 1">
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 24px 46px;
+                  "
+                >
+                  <div style="display: flex; align-items: center; gap: 10px">
+                    <svg
+                      viewBox="0 0 24 22"
+                      width="19"
+                      height="18"
+                      fill="none"
+                      style="color: #c2542f"
+                    >
+                      <path
+                        d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <span
+                      style="
+                        font-family: &quot;Hedvig Letters Serif&quot;, serif;
+                        font-size: 21px;
+                        color: #2a241d;
+                      "
+                      >LSD Capital</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 30px; font-size: 14.5px; color: #7a6f60">
+                    <span>Who we back</span><span>What we build</span><span>Community</span>
+                  </div>
+                  <a
+                    href="mailto:hello@lsd.capital"
+                    style="
+                      border: 1.5px solid #2a241d;
+                      color: #2a241d;
+                      padding: 10px 22px;
+                      border-radius: 999px;
+                      font-size: 13.5px;
+                      font-weight: 500;
+                      text-decoration: none;
+                    "
+                    >Say hello</a
+                  >
+                </div>
+                <div
+                  style="
+                    display: grid;
+                    grid-template-columns: 1.15fr 0.85fr;
+                    gap: 48px;
+                    align-items: center;
+                    padding: 54px 46px 64px;
+                  "
+                >
+                  <div>
+                    <h1
+                      style="
+                        margin: 0;
+                        font-family: &quot;Hedvig Letters Serif&quot;, serif;
+                        font-size: 80px;
+                        line-height: 1;
+                        letter-spacing: -0.01em;
+                        color: #2a241d;
+                      "
+                    >
+                      Hi — we're LSD.
+                    </h1>
+                    <p
+                      style="
+                        margin: 28px 0 0;
+                        font-size: 20px;
+                        line-height: 1.6;
+                        color: #6f6456;
+                        max-width: 480px;
+                      "
+                    >
+                      We put heart, time, and a little capital behind people solving real problems.
+                      Then we stick around for the long, unglamorous middle — the part that actually
+                      matters.
+                    </p>
+                    <div style="display: flex; align-items: center; gap: 22px; margin-top: 36px">
+                      <a
+                        href="mailto:hello@lsd.capital"
+                        style="
+                          background: #c2542f;
+                          color: #fbf3e8;
+                          padding: 14px 28px;
+                          border-radius: 999px;
+                          font-size: 15px;
+                          font-weight: 600;
+                          text-decoration: none;
+                        "
+                        >Come say hi</a
+                      >
+                      <span style="font-size: 15px; color: #9a8c78">hello@lsd.capital</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      style="
+                        aspect-ratio: 4/5;
+                        border-radius: 24px;
+                        background: linear-gradient(150deg, #ecdac4, #e3c8ad);
+                        border: 1.5px dashed #c79f78;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 12px;
+                        color: #a9805a;
+                      "
+                    >
+                      <svg
+                        viewBox="0 0 24 22"
+                        width="46"
+                        height="42"
+                        fill="none"
+                        style="color: #c2542f; opacity: 0.5"
+                      >
+                        <path
+                          d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z"
+                          stroke="currentColor"
+                          stroke-width="1.4"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                      <span style="font-size: 14px; font-weight: 500">A photo of us goes here</span>
+                    </div>
+                    <p
+                      style="
+                        margin: 14px 2px 0;
+                        font-size: 13.5px;
+                        color: #9a8c78;
+                        font-style: italic;
+                      "
+                    >
+                      The team — Cape Town, most days.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
-            <div>
-              <div style="aspect-ratio:4/5;border-radius:24px;background:linear-gradient(150deg,#ecdac4,#e3c8ad);border:1.5px dashed #c79f78;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#a9805a">
-                <svg viewBox="0 0 24 22" width="46" height="42" fill="none" style="color:#c2542f;opacity:.5"><path d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span style="font-size:14px;font-weight:500">A photo of us goes here</span>
+          </div>
+
+          <!-- ============ 2c — TERRACOTTA BLOCK (boldest, least editorial) ============ -->
+          <div class="dv-opt" id="2c">
+            <div class="dv-olabel">
+              <a class="dv-oid" href="#2c">2c</a>Terracotta — bold, sans-only, furthest from a fund
+            </div>
+            <div
+              class="dv-card"
+              style="
+                width: 1180px;
+                background: #c2542f;
+                font-family: &quot;Hanken Grotesk&quot;, sans-serif;
+                position: relative;
+                overflow: hidden;
+              "
+            >
+              <svg
+                viewBox="0 0 24 22"
+                width="620"
+                height="568"
+                fill="none"
+                style="position: absolute; top: 60px; right: -130px; color: #cf6b48; z-index: 0"
+              >
+                <path
+                  d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z"
+                  stroke="currentColor"
+                  stroke-width=".7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <div style="position: relative; z-index: 1">
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 24px 46px;
+                  "
+                >
+                  <div style="display: flex; align-items: center; gap: 10px">
+                    <svg
+                      viewBox="0 0 24 22"
+                      width="19"
+                      height="18"
+                      fill="none"
+                      style="color: #fbf3e8"
+                    >
+                      <path
+                        d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <span
+                      style="
+                        font-family: &quot;Hanken Grotesk&quot;, sans-serif;
+                        font-weight: 700;
+                        font-size: 20px;
+                        letter-spacing: -0.01em;
+                        color: #fbf3e8;
+                      "
+                      >LSD Capital</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      gap: 30px;
+                      font-size: 14.5px;
+                      color: rgba(251, 243, 232, 0.82);
+                    "
+                  >
+                    <span>Who we back</span><span>What we build</span><span>Community</span>
+                  </div>
+                  <a
+                    href="mailto:hello@lsd.capital"
+                    style="
+                      background: #fbf3e8;
+                      color: #c2542f;
+                      padding: 11px 22px;
+                      border-radius: 999px;
+                      font-size: 13.5px;
+                      font-weight: 600;
+                      text-decoration: none;
+                    "
+                    >Say hello</a
+                  >
+                </div>
+                <div style="padding: 84px 46px 70px">
+                  <h1
+                    style="
+                      margin: 0;
+                      font-family: &quot;Hanken Grotesk&quot;, sans-serif;
+                      font-weight: 700;
+                      font-size: 108px;
+                      line-height: 0.94;
+                      letter-spacing: -0.04em;
+                      color: #fbf3e8;
+                      max-width: 860px;
+                    "
+                  >
+                    Heart first. The rest follows.
+                  </h1>
+                  <p
+                    style="
+                      margin: 30px 0 0;
+                      font-size: 21px;
+                      line-height: 1.55;
+                      color: rgba(251, 243, 232, 0.9);
+                      max-width: 560px;
+                    "
+                  >
+                    We're a few people who back founders we believe in, build things we'd actually
+                    use, and care more about the journey than the deck. Africa &amp; beyond.
+                  </p>
+                  <div style="display: flex; align-items: center; gap: 24px; margin-top: 42px">
+                    <a
+                      href="mailto:hello@lsd.capital"
+                      style="
+                        background: #2a241d;
+                        color: #fbf3e8;
+                        padding: 15px 30px;
+                        border-radius: 999px;
+                        font-size: 15px;
+                        font-weight: 600;
+                        text-decoration: none;
+                      "
+                      >Start a conversation</a
+                    >
+                    <span style="font-size: 15px; color: rgba(251, 243, 232, 0.78)"
+                      >hello@lsd.capital</span
+                    >
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      gap: 18px;
+                      align-items: center;
+                      margin-top: 72px;
+                      padding-top: 26px;
+                      border-top: 1px solid rgba(251, 243, 232, 0.28);
+                      font-size: 15px;
+                      color: rgba(251, 243, 232, 0.85);
+                    "
+                  >
+                    <span style="font-weight: 600">18 founders backed</span
+                    ><span style="opacity: 0.5">·</span><span>2 things we're building</span
+                    ><span style="opacity: 0.5">·</span><span>1 theme camp in the desert</span>
+                  </div>
+                </div>
               </div>
-              <p style="margin:14px 2px 0;font-size:13.5px;color:#9a8c78;font-style:italic">The team — Cape Town, most days.</p>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+        <p class="dv-next">
+          Try next: "go with <a class="dv-oid" href="#2a">2a</a>, build the full portfolio &amp;
+          projects pages" · "make <a class="dv-oid" href="#2c">2c</a> a touch calmer / try a
+          different warm color" · "give <a class="dv-oid" href="#2b">2b</a> a real photo treatment"
+          · "blend <a class="dv-oid" href="#2a">2a</a>'s type with
+          <a class="dv-oid" href="#2b">2b</a>'s warmth"
+        </p>
+      </section>
 
-    <!-- ============ 2c — TERRACOTTA BLOCK (boldest, least editorial) ============ -->
-    <div class="dv-opt" id="2c">
-      <div class="dv-olabel"><a class="dv-oid" href="#2c">2c</a>Terracotta — bold, sans-only, furthest from a fund</div>
-      <div class="dv-card" style="width:1180px;background:#c2542f;font-family:'Hanken Grotesk',sans-serif;position:relative;overflow:hidden">
-        <svg viewBox="0 0 24 22" width="620" height="568" fill="none" style="position:absolute;top:60px;right:-130px;color:#cf6b48;z-index:0"><path d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z" stroke="currentColor" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div style="position:relative;z-index:1">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:24px 46px">
-            <div style="display:flex;align-items:center;gap:10px">
-              <svg viewBox="0 0 24 22" width="19" height="18" fill="none" style="color:#fbf3e8"><path d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span style="font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.01em;color:#fbf3e8">LSD Capital</span>
+      <section class="dv-turn" id="t1">
+        <div class="dv-thd">
+          <a class="dv-tid" href="#t1">1</a
+          ><span class="dv-tname"
+            >Homepage directions — warm &amp; distinctive, within your editorial DNA</span
+          >
+        </div>
+        <div class="dv-opts">
+          <!-- ============ 1a — THE MASTHEAD ============ -->
+          <div class="dv-opt" id="1a">
+            <div class="dv-olabel">
+              <a class="dv-oid" href="#1a">1a</a>The Masthead — elevate the newspaper, lead with
+              proof
             </div>
-            <div style="display:flex;gap:30px;font-size:14.5px;color:rgba(251,243,232,.82)"><span>Who we back</span><span>What we build</span><span>Community</span></div>
-            <a href="mailto:hello@lsd.capital" style="background:#fbf3e8;color:#c2542f;padding:11px 22px;border-radius:999px;font-size:13.5px;font-weight:600;text-decoration:none">Say hello</a>
-          </div>
-          <div style="padding:84px 46px 70px">
-            <h1 style="margin:0;font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:108px;line-height:.94;letter-spacing:-.04em;color:#fbf3e8;max-width:860px">Heart first. The rest follows.</h1>
-            <p style="margin:30px 0 0;font-size:21px;line-height:1.55;color:rgba(251,243,232,.9);max-width:560px">We're a few people who back founders we believe in, build things we'd actually use, and care more about the journey than the deck. Africa &amp; beyond.</p>
-            <div style="display:flex;align-items:center;gap:24px;margin-top:42px">
-              <a href="mailto:hello@lsd.capital" style="background:#2a241d;color:#fbf3e8;padding:15px 30px;border-radius:999px;font-size:15px;font-weight:600;text-decoration:none">Start a conversation</a>
-              <span style="font-size:15px;color:rgba(251,243,232,.78)">hello@lsd.capital</span>
+            <div class="dv-card" style="width: 1180px">
+              <!-- nameplate -->
+              <div style="padding: 0 40px">
+                <div style="height: 3px; background: #111; margin-top: 26px"></div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 14px 0 16px;
+                    border-bottom: 1px solid #d9d4c7;
+                  "
+                >
+                  <p
+                    style="
+                      margin: 0;
+                      font-size: 9.5px;
+                      letter-spacing: 0.26em;
+                      text-transform: uppercase;
+                      color: #5a5a55;
+                      line-height: 1.7;
+                    "
+                  >
+                    Est.<br />MMXXIV
+                  </p>
+                  <div style="display: flex; align-items: center; gap: 13px">
+                    <svg
+                      viewBox="0 0 24 22"
+                      width="26"
+                      height="24"
+                      fill="none"
+                      style="color: #1f5d3a"
+                    >
+                      <path
+                        d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z"
+                        stroke="currentColor"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <span
+                      style="
+                        font-family: &quot;Fraunces&quot;, serif;
+                        font-weight: 500;
+                        font-size: 38px;
+                        letter-spacing: 0.02em;
+                        color: #111;
+                      "
+                      >LSD Capital</span
+                    >
+                  </div>
+                  <p
+                    style="
+                      margin: 0;
+                      font-size: 9.5px;
+                      letter-spacing: 0.26em;
+                      text-transform: uppercase;
+                      color: #5a5a55;
+                      line-height: 1.7;
+                      text-align: right;
+                    "
+                  >
+                    Cape Town<br />Mahé · ZA/SC
+                  </p>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: center;
+                    gap: 22px;
+                    padding: 9px 0;
+                    border-bottom: 1px solid #d9d4c7;
+                    font-size: 9.5px;
+                    letter-spacing: 0.24em;
+                    text-transform: uppercase;
+                    color: #5a5a55;
+                  "
+                >
+                  <span>Vol. 01 / 2026</span><span style="color: #d9d4c7">—</span
+                  ><span>Angel &amp; Seed</span><span style="color: #d9d4c7">—</span
+                  ><span>Heart-led Capital</span><span style="color: #d9d4c7">—</span
+                  ><span>Hello@lsd.capital</span>
+                </div>
+              </div>
+              <!-- hero -->
+              <div style="padding: 54px 40px 16px">
+                <p
+                  style="
+                    margin: 0 0 22px;
+                    font-size: 10px;
+                    letter-spacing: 0.26em;
+                    text-transform: uppercase;
+                    color: #5a5a55;
+                  "
+                >
+                  § The Thesis
+                </p>
+                <h1
+                  style="
+                    margin: 0;
+                    font-family: &quot;Fraunces&quot;, serif;
+                    font-weight: 500;
+                    font-size: 108px;
+                    line-height: 0.9;
+                    letter-spacing: -0.025em;
+                    color: #111;
+                    max-width: 1000px;
+                  "
+                >
+                  Heart-led leaders, <em class="acc">solving real problems.</em>
+                </h1>
+                <div style="display: flex; gap: 40px; margin-top: 36px; align-items: flex-end">
+                  <p
+                    style="
+                      margin: 0;
+                      font-family: &quot;Fraunces&quot;, serif;
+                      font-style: italic;
+                      font-size: 23px;
+                      line-height: 1.4;
+                      color: #5a5a55;
+                      max-width: 560px;
+                    "
+                  >
+                    We partner with tech-focused angel and seed startups, investing with purpose,
+                    passion, and a commitment to positive impact.
+                  </p>
+                  <a
+                    href="mailto:hello@lsd.capital"
+                    style="
+                      white-space: nowrap;
+                      margin-bottom: 6px;
+                      font-size: 11px;
+                      letter-spacing: 0.24em;
+                      text-transform: uppercase;
+                      color: #111;
+                      border-bottom: 1px solid #111;
+                      padding-bottom: 5px;
+                      text-decoration: none;
+                    "
+                    >Start a conversation →</a
+                  >
+                </div>
+              </div>
+              <!-- proof strip -->
+              <div
+                style="
+                  margin-top: 46px;
+                  border-top: 1px solid #d9d4c7;
+                  border-bottom: 1px solid #d9d4c7;
+                  padding: 22px 40px;
+                  display: flex;
+                  align-items: center;
+                  gap: 18px;
+                  background: #f5f1e8;
+                "
+              >
+                <span
+                  style="
+                    flex: none;
+                    font-size: 9.5px;
+                    letter-spacing: 0.24em;
+                    text-transform: uppercase;
+                    color: #5a5a55;
+                    line-height: 1.6;
+                    max-width: 120px;
+                  "
+                  >18 companies<br />backed to date</span
+                >
+                <span style="width: 1px; height: 34px; background: #d9d4c7; flex: none"></span>
+                <div
+                  class="logo-strip"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 40px;
+                    flex: 1;
+                    justify-content: space-around;
+                  "
+                >
+                  <img src="assets/dope-logo.svg" alt="Dope" />
+                  <img src="assets/wer1-logo.svg" alt="WeR1" />
+                  <img src="assets/didx-logo.svg" alt="DIDX" />
+                  <img src="assets/inves-logo.svg" alt="Inv.es" />
+                  <img src="assets/frsh-minds-logo.svg" alt="Frsh Minds" />
+                  <img src="assets/linkidink-logo.png" alt="LinkiDink" />
+                </div>
+              </div>
+              <!-- sections index -->
+              <div style="padding: 8px 40px 40px">
+                <div
+                  style="
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    border-bottom: 1px solid #111;
+                  "
+                >
+                  <div style="padding: 26px 24px 24px 0; border-right: 1px solid #d9d4c7">
+                    <span
+                      style="
+                        font-family: &quot;Fraunces&quot;, serif;
+                        font-size: 30px;
+                        color: #c8c2b4;
+                      "
+                      >01</span
+                    >
+                    <h3
+                      style="
+                        margin: 6px 0 5px;
+                        font-family: &quot;Fraunces&quot;, serif;
+                        font-size: 26px;
+                        color: #111;
+                      "
+                    >
+                      Investments
+                    </h3>
+                    <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #5a5a55">
+                      Founders we have backed across Africa and beyond.
+                    </p>
+                  </div>
+                  <div style="padding: 26px 24px; border-right: 1px solid #d9d4c7">
+                    <span
+                      style="
+                        font-family: &quot;Fraunces&quot;, serif;
+                        font-size: 30px;
+                        color: #c8c2b4;
+                      "
+                      >02</span
+                    >
+                    <h3
+                      style="
+                        margin: 6px 0 5px;
+                        font-family: &quot;Fraunces&quot;, serif;
+                        font-size: 26px;
+                        color: #111;
+                      "
+                    >
+                      Projects
+                    </h3>
+                    <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #5a5a55">
+                      Things we build ourselves — starting with LinkiDink.
+                    </p>
+                  </div>
+                  <div style="padding: 26px 0 24px 24px">
+                    <span
+                      style="
+                        font-family: &quot;Fraunces&quot;, serif;
+                        font-size: 30px;
+                        color: #c8c2b4;
+                      "
+                      >03</span
+                    >
+                    <h3
+                      style="
+                        margin: 6px 0 5px;
+                        font-family: &quot;Fraunces&quot;, serif;
+                        font-size: 26px;
+                        color: #111;
+                      "
+                    >
+                      Community
+                    </h3>
+                    <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #5a5a55">
+                      Where we show up beyond capital.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div style="display:flex;gap:18px;align-items:center;margin-top:72px;padding-top:26px;border-top:1px solid rgba(251,243,232,.28);font-size:15px;color:rgba(251,243,232,.85)">
-              <span style="font-weight:600">18 founders backed</span><span style="opacity:.5">·</span><span>2 things we're building</span><span style="opacity:.5">·</span><span>1 theme camp in the desert</span>
+          </div>
+
+          <!-- ============ 1b — HEART-LED (warm, human, a letter) ============ -->
+          <div class="dv-opt" id="1b">
+            <div class="dv-olabel">
+              <a class="dv-oid" href="#1b">1b</a>Heart-led — a note from the people, not a pitch
+            </div>
+            <div class="dv-card" style="width: 1180px; background: #f4eee2">
+              <div class="lsd-nav" style="border-color: #e3dcca">
+                <div style="display: flex; align-items: center; gap: 11px">
+                  <svg
+                    viewBox="0 0 24 22"
+                    width="17"
+                    height="16"
+                    fill="none"
+                    style="color: #c25a3a"
+                  >
+                    <path
+                      d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z"
+                      stroke="currentColor"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    /></svg
+                  ><span
+                    style="font-family: &quot;Fraunces&quot;, serif; font-size: 20px; color: #111"
+                    >LSD Capital</span
+                  >
+                </div>
+                <div class="lsd-navlinks">
+                  <span>Investments</span><span>Projects</span><span>Community</span>
+                </div>
+                <span
+                  style="
+                    font-size: 10.5px;
+                    letter-spacing: 0.22em;
+                    text-transform: uppercase;
+                    color: #111;
+                  "
+                  >Contact →</span
+                >
+              </div>
+              <div style="display: grid; grid-template-columns: 1.35fr 1fr; min-height: 560px">
+                <!-- the letter -->
+                <div
+                  style="
+                    padding: 64px 56px 56px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                  "
+                >
+                  <p
+                    style="
+                      margin: 0 0 26px;
+                      font-size: 10px;
+                      letter-spacing: 0.26em;
+                      text-transform: uppercase;
+                      color: #a88c6b;
+                    "
+                  >
+                    A note, before the numbers
+                  </p>
+                  <h1
+                    style="
+                      margin: 0;
+                      font-family: &quot;Fraunces&quot;, serif;
+                      font-weight: 500;
+                      font-size: 60px;
+                      line-height: 1.02;
+                      letter-spacing: -0.02em;
+                      color: #111;
+                      max-width: 560px;
+                    "
+                  >
+                    We back people the way we'd
+                    <em class="acc" style="color: #c25a3a">want to be backed</em> ourselves.
+                  </h1>
+                  <p
+                    style="
+                      margin: 30px 0 0;
+                      font-family: &quot;Fraunces&quot;, serif;
+                      font-style: italic;
+                      font-size: 21px;
+                      line-height: 1.5;
+                      color: #5a5a55;
+                      max-width: 520px;
+                    "
+                  >
+                    Not just capital — heart, time, and conviction. We invest in tech-focused angel
+                    and seed founders solving real problems, and we stay close long after the wire
+                    clears.
+                  </p>
+                  <div style="margin-top: 38px; display: flex; align-items: baseline; gap: 20px">
+                    <span
+                      style="
+                        font-family: &quot;Fraunces&quot;, serif;
+                        font-style: italic;
+                        font-size: 26px;
+                        color: #111;
+                      "
+                      >— The LSD Capital team</span
+                    >
+                    <a
+                      href="mailto:hello@lsd.capital"
+                      style="
+                        font-size: 11px;
+                        letter-spacing: 0.22em;
+                        text-transform: uppercase;
+                        color: #c25a3a;
+                        border-bottom: 1px solid #c25a3a;
+                        padding-bottom: 4px;
+                        text-decoration: none;
+                      "
+                      >Write to us →</a
+                    >
+                  </div>
+                </div>
+                <!-- big heart -->
+                <div
+                  style="
+                    background: #111;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                  "
+                >
+                  <svg
+                    viewBox="0 0 24 22"
+                    width="280"
+                    height="257"
+                    fill="none"
+                    style="color: #c25a3a"
+                  >
+                    <path
+                      d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z"
+                      stroke="currentColor"
+                      stroke-width="1"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <p
+                    style="
+                      position: absolute;
+                      bottom: 30px;
+                      left: 34px;
+                      right: 34px;
+                      margin: 0;
+                      font-family: &quot;Fraunces&quot;, serif;
+                      font-style: italic;
+                      font-size: 16px;
+                      line-height: 1.5;
+                      color: #f4eee2;
+                    "
+                  >
+                    "Heart-led" isn't a tagline. It's the only filter we have.
+                  </p>
+                  <span
+                    style="
+                      position: absolute;
+                      top: 28px;
+                      left: 34px;
+                      font-size: 9.5px;
+                      letter-spacing: 0.26em;
+                      text-transform: uppercase;
+                      color: #6f6a60;
+                    "
+                    >Cape Town · Mahé</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============ 1c — THE INDEX (bold poster, dramatic contrast) ============ -->
+          <div class="dv-opt" id="1c">
+            <div class="dv-olabel">
+              <a class="dv-oid" href="#1c">1c</a>The Index — bold poster, dramatic dark panel
+            </div>
+            <div class="dv-card" style="width: 1180px">
+              <div class="lsd-nav">
+                <div style="display: flex; align-items: center; gap: 11px">
+                  <svg
+                    viewBox="0 0 24 22"
+                    width="17"
+                    height="16"
+                    fill="none"
+                    style="color: #1f5d3a"
+                  >
+                    <path
+                      d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z"
+                      stroke="currentColor"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    /></svg
+                  ><span
+                    style="font-family: &quot;Fraunces&quot;, serif; font-size: 20px; color: #111"
+                    >LSD Capital</span
+                  >
+                </div>
+                <div class="lsd-navlinks">
+                  <span>Investments</span><span>Projects</span><span>Community</span>
+                </div>
+                <span
+                  style="
+                    font-size: 10.5px;
+                    letter-spacing: 0.22em;
+                    text-transform: uppercase;
+                    color: #111;
+                  "
+                  >Contact →</span
+                >
+              </div>
+              <!-- giant hero -->
+              <div style="padding: 60px 48px 44px; position: relative">
+                <span
+                  style="
+                    position: absolute;
+                    top: 60px;
+                    right: 48px;
+                    font-size: 10px;
+                    letter-spacing: 0.26em;
+                    text-transform: uppercase;
+                    color: #5a5a55;
+                    text-align: right;
+                    line-height: 1.8;
+                  "
+                  >Vol. 01<br />MMXXVI</span
+                >
+                <p
+                  style="
+                    margin: 0 0 14px;
+                    font-size: 10px;
+                    letter-spacing: 0.26em;
+                    text-transform: uppercase;
+                    color: #5a5a55;
+                  "
+                >
+                  Angel &amp; seed · Africa &amp; beyond
+                </p>
+                <h1
+                  style="
+                    margin: 0;
+                    font-family: &quot;Fraunces&quot;, serif;
+                    font-weight: 600;
+                    font-size: 150px;
+                    line-height: 0.84;
+                    letter-spacing: -0.04em;
+                    color: #111;
+                  "
+                >
+                  Heart-<em class="acc">led.</em>
+                </h1>
+                <p
+                  style="
+                    margin: 24px 0 0;
+                    font-family: &quot;Fraunces&quot;, serif;
+                    font-style: italic;
+                    font-size: 24px;
+                    line-height: 1.4;
+                    color: #5a5a55;
+                    max-width: 620px;
+                  "
+                >
+                  Backing people and projects with heart, capital, and time — and building a few
+                  things of our own.
+                </p>
+              </div>
+              <!-- dark index panel -->
+              <div style="background: #111; padding: 8px 48px 44px; position: relative">
+                <div
+                  style="
+                    display: flex;
+                    align-items: baseline;
+                    justify-content: space-between;
+                    padding: 30px 0 18px;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+                  "
+                >
+                  <span
+                    style="
+                      font-size: 10px;
+                      letter-spacing: 0.26em;
+                      text-transform: uppercase;
+                      color: #8a857a;
+                    "
+                    >The Index</span
+                  >
+                  <span
+                    style="
+                      font-size: 10px;
+                      letter-spacing: 0.26em;
+                      text-transform: uppercase;
+                      color: #8a857a;
+                    "
+                    >Three pursuits</span
+                  >
+                </div>
+                <a
+                  style="
+                    display: grid;
+                    grid-template-columns: 110px 1fr 40px;
+                    align-items: baseline;
+                    gap: 24px;
+                    padding: 28px 0;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+                    text-decoration: none;
+                  "
+                >
+                  <span
+                    style="
+                      font-family: &quot;Fraunces&quot;, serif;
+                      font-size: 58px;
+                      line-height: 0.8;
+                      color: #3f8a5e;
+                    "
+                    >01</span
+                  >
+                  <div>
+                    <h3
+                      style="
+                        margin: 0 0 6px;
+                        font-family: &quot;Fraunces&quot;, serif;
+                        font-size: 40px;
+                        color: #faf8f3;
+                      "
+                    >
+                      Investments
+                    </h3>
+                    <p style="margin: 0; font-size: 14px; color: #a9a499; max-width: 560px">
+                      18 tech-focused angel and seed companies, led by founders we believe in.
+                    </p>
+                  </div>
+                  <span style="text-align: right; font-size: 20px; color: #3f8a5e">→</span>
+                </a>
+                <a
+                  style="
+                    display: grid;
+                    grid-template-columns: 110px 1fr 40px;
+                    align-items: baseline;
+                    gap: 24px;
+                    padding: 28px 0;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+                    text-decoration: none;
+                  "
+                >
+                  <span
+                    style="
+                      font-family: &quot;Fraunces&quot;, serif;
+                      font-size: 58px;
+                      line-height: 0.8;
+                      color: #3f8a5e;
+                    "
+                    >02</span
+                  >
+                  <div>
+                    <h3
+                      style="
+                        margin: 0 0 6px;
+                        font-family: &quot;Fraunces&quot;, serif;
+                        font-size: 40px;
+                        color: #faf8f3;
+                      "
+                    >
+                      Projects
+                    </h3>
+                    <p style="margin: 0; font-size: 14px; color: #a9a499; max-width: 560px">
+                      Things we build ourselves — LinkiDink, itwyit, and more, shipped quietly.
+                    </p>
+                  </div>
+                  <span style="text-align: right; font-size: 20px; color: #3f8a5e">→</span>
+                </a>
+                <a
+                  style="
+                    display: grid;
+                    grid-template-columns: 110px 1fr 40px;
+                    align-items: baseline;
+                    gap: 24px;
+                    padding: 28px 0;
+                    text-decoration: none;
+                  "
+                >
+                  <span
+                    style="
+                      font-family: &quot;Fraunces&quot;, serif;
+                      font-size: 58px;
+                      line-height: 0.8;
+                      color: #3f8a5e;
+                    "
+                    >03</span
+                  >
+                  <div>
+                    <h3
+                      style="
+                        margin: 0 0 6px;
+                        font-family: &quot;Fraunces&quot;, serif;
+                        font-size: 40px;
+                        color: #faf8f3;
+                      "
+                    >
+                      Community
+                    </h3>
+                    <p style="margin: 0; font-size: 14px; color: #a9a499; max-width: 560px">
+                      Where we show up beyond capital — our Afrikaburn theme camp, and more.
+                    </p>
+                  </div>
+                  <span style="text-align: right; font-size: 20px; color: #3f8a5e">→</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-
-  </div>
-  <p class="dv-next">Try next: "go with <a class="dv-oid" href="#2a">2a</a>, build the full portfolio &amp; projects pages" · "make <a class="dv-oid" href="#2c">2c</a> a touch calmer / try a different warm color" · "give <a class="dv-oid" href="#2b">2b</a> a real photo treatment" · "blend <a class="dv-oid" href="#2a">2a</a>'s type with <a class="dv-oid" href="#2b">2b</a>'s warmth"</p>
-</section>
-
-<section class="dv-turn" id="t1">
-  <div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Homepage directions — warm &amp; distinctive, within your editorial DNA</span></div>
-  <div class="dv-opts">
-
-    <!-- ============ 1a — THE MASTHEAD ============ -->
-    <div class="dv-opt" id="1a">
-      <div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>The Masthead — elevate the newspaper, lead with proof</div>
-      <div class="dv-card" style="width:1180px">
-        <!-- nameplate -->
-        <div style="padding:0 40px">
-          <div style="height:3px;background:#111;margin-top:26px"></div>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0 16px;border-bottom:1px solid #d9d4c7">
-            <p style="margin:0;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#5a5a55;line-height:1.7">Est.<br>MMXXIV</p>
-            <div style="display:flex;align-items:center;gap:13px">
-              <svg viewBox="0 0 24 22" width="26" height="24" fill="none" style="color:#1f5d3a"><path d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span style="font-family:'Fraunces',serif;font-weight:500;font-size:38px;letter-spacing:.02em;color:#111">LSD Capital</span>
-            </div>
-            <p style="margin:0;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#5a5a55;line-height:1.7;text-align:right">Cape Town<br>Mahé · ZA/SC</p>
-          </div>
-          <div style="display:flex;justify-content:center;gap:22px;padding:9px 0;border-bottom:1px solid #d9d4c7;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#5a5a55">
-            <span>Vol. 01 / 2026</span><span style="color:#d9d4c7">—</span><span>Angel &amp; Seed</span><span style="color:#d9d4c7">—</span><span>Heart-led Capital</span><span style="color:#d9d4c7">—</span><span>Hello@lsd.capital</span>
-          </div>
-        </div>
-        <!-- hero -->
-        <div style="padding:54px 40px 16px">
-          <p style="margin:0 0 22px;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:#5a5a55">§ The Thesis</p>
-          <h1 style="margin:0;font-family:'Fraunces',serif;font-weight:500;font-size:108px;line-height:.9;letter-spacing:-.025em;color:#111;max-width:1000px">Heart-led leaders, <em class="acc">solving real problems.</em></h1>
-          <div style="display:flex;gap:40px;margin-top:36px;align-items:flex-end">
-            <p style="margin:0;font-family:'Fraunces',serif;font-style:italic;font-size:23px;line-height:1.4;color:#5a5a55;max-width:560px">We partner with tech-focused angel and seed startups, investing with purpose, passion, and a commitment to positive impact.</p>
-            <a href="mailto:hello@lsd.capital" style="white-space:nowrap;margin-bottom:6px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#111;border-bottom:1px solid #111;padding-bottom:5px;text-decoration:none">Start a conversation →</a>
-          </div>
-        </div>
-        <!-- proof strip -->
-        <div style="margin-top:46px;border-top:1px solid #d9d4c7;border-bottom:1px solid #d9d4c7;padding:22px 40px;display:flex;align-items:center;gap:18px;background:#f5f1e8">
-          <span style="flex:none;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:#5a5a55;line-height:1.6;max-width:120px">18 companies<br>backed to date</span>
-          <span style="width:1px;height:34px;background:#d9d4c7;flex:none"></span>
-          <div class="logo-strip" style="display:flex;align-items:center;gap:40px;flex:1;justify-content:space-around">
-            <img src="assets/dope-logo.svg" alt="Dope">
-            <img src="assets/wer1-logo.svg" alt="WeR1">
-            <img src="assets/didx-logo.svg" alt="DIDX">
-            <img src="assets/inves-logo.svg" alt="Inv.es">
-            <img src="assets/frsh-minds-logo.svg" alt="Frsh Minds">
-            <img src="assets/linkidink-logo.png" alt="LinkiDink">
-          </div>
-        </div>
-        <!-- sections index -->
-        <div style="padding:8px 40px 40px">
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid #111">
-            <div style="padding:26px 24px 24px 0;border-right:1px solid #d9d4c7"><span style="font-family:'Fraunces',serif;font-size:30px;color:#c8c2b4">01</span><h3 style="margin:6px 0 5px;font-family:'Fraunces',serif;font-size:26px;color:#111">Investments</h3><p style="margin:0;font-size:13px;line-height:1.5;color:#5a5a55">Founders we have backed across Africa and beyond.</p></div>
-            <div style="padding:26px 24px;border-right:1px solid #d9d4c7"><span style="font-family:'Fraunces',serif;font-size:30px;color:#c8c2b4">02</span><h3 style="margin:6px 0 5px;font-family:'Fraunces',serif;font-size:26px;color:#111">Projects</h3><p style="margin:0;font-size:13px;line-height:1.5;color:#5a5a55">Things we build ourselves — starting with LinkiDink.</p></div>
-            <div style="padding:26px 0 24px 24px"><span style="font-family:'Fraunces',serif;font-size:30px;color:#c8c2b4">03</span><h3 style="margin:6px 0 5px;font-family:'Fraunces',serif;font-size:26px;color:#111">Community</h3><p style="margin:0;font-size:13px;line-height:1.5;color:#5a5a55">Where we show up beyond capital.</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ============ 1b — HEART-LED (warm, human, a letter) ============ -->
-    <div class="dv-opt" id="1b">
-      <div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Heart-led — a note from the people, not a pitch</div>
-      <div class="dv-card" style="width:1180px;background:#f4eee2">
-        <div class="lsd-nav" style="border-color:#e3dcca">
-          <div style="display:flex;align-items:center;gap:11px"><svg viewBox="0 0 24 22" width="17" height="16" fill="none" style="color:#c25a3a"><path d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family:'Fraunces',serif;font-size:20px;color:#111">LSD Capital</span></div>
-          <div class="lsd-navlinks"><span>Investments</span><span>Projects</span><span>Community</span></div>
-          <span style="font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#111">Contact →</span>
-        </div>
-        <div style="display:grid;grid-template-columns:1.35fr 1fr;min-height:560px">
-          <!-- the letter -->
-          <div style="padding:64px 56px 56px;display:flex;flex-direction:column;justify-content:center">
-            <p style="margin:0 0 26px;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:#a88c6b">A note, before the numbers</p>
-            <h1 style="margin:0;font-family:'Fraunces',serif;font-weight:500;font-size:60px;line-height:1.02;letter-spacing:-.02em;color:#111;max-width:560px">We back people the way we'd <em class="acc" style="color:#c25a3a">want to be backed</em> ourselves.</h1>
-            <p style="margin:30px 0 0;font-family:'Fraunces',serif;font-style:italic;font-size:21px;line-height:1.5;color:#5a5a55;max-width:520px">Not just capital — heart, time, and conviction. We invest in tech-focused angel and seed founders solving real problems, and we stay close long after the wire clears.</p>
-            <div style="margin-top:38px;display:flex;align-items:baseline;gap:20px">
-              <span style="font-family:'Fraunces',serif;font-style:italic;font-size:26px;color:#111">— The LSD Capital team</span>
-              <a href="mailto:hello@lsd.capital" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#c25a3a;border-bottom:1px solid #c25a3a;padding-bottom:4px;text-decoration:none">Write to us →</a>
-            </div>
-          </div>
-          <!-- big heart -->
-          <div style="background:#111;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden">
-            <svg viewBox="0 0 24 22" width="280" height="257" fill="none" style="color:#c25a3a"><path d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <p style="position:absolute;bottom:30px;left:34px;right:34px;margin:0;font-family:'Fraunces',serif;font-style:italic;font-size:16px;line-height:1.5;color:#f4eee2">"Heart-led" isn't a tagline. It's the only filter we have.</p>
-            <span style="position:absolute;top:28px;left:34px;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:#6f6a60">Cape Town · Mahé</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ============ 1c — THE INDEX (bold poster, dramatic contrast) ============ -->
-    <div class="dv-opt" id="1c">
-      <div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>The Index — bold poster, dramatic dark panel</div>
-      <div class="dv-card" style="width:1180px">
-        <div class="lsd-nav">
-          <div style="display:flex;align-items:center;gap:11px"><svg viewBox="0 0 24 22" width="17" height="16" fill="none" style="color:#1f5d3a"><path d="M3.4 5.1c.6-2 2.4-3.4 4.5-3.4 1.8 0 3.3 1 4.1 2.4.8-1.5 2.4-2.6 4.2-2.5 2.4.1 4.2 1.8 4.6 4 .5 2.9-1 5.6-3.1 7.7-2 2-4.5 3.6-5.7 4.3-1.2-.7-3.9-2.4-5.9-4.6C4 11 2.6 8 3.4 5.1Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family:'Fraunces',serif;font-size:20px;color:#111">LSD Capital</span></div>
-          <div class="lsd-navlinks"><span>Investments</span><span>Projects</span><span>Community</span></div>
-          <span style="font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#111">Contact →</span>
-        </div>
-        <!-- giant hero -->
-        <div style="padding:60px 48px 44px;position:relative">
-          <span style="position:absolute;top:60px;right:48px;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:#5a5a55;text-align:right;line-height:1.8">Vol. 01<br>MMXXVI</span>
-          <p style="margin:0 0 14px;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:#5a5a55">Angel &amp; seed · Africa &amp; beyond</p>
-          <h1 style="margin:0;font-family:'Fraunces',serif;font-weight:600;font-size:150px;line-height:.84;letter-spacing:-.04em;color:#111">Heart-<em class="acc">led.</em></h1>
-          <p style="margin:24px 0 0;font-family:'Fraunces',serif;font-style:italic;font-size:24px;line-height:1.4;color:#5a5a55;max-width:620px">Backing people and projects with heart, capital, and time — and building a few things of our own.</p>
-        </div>
-        <!-- dark index panel -->
-        <div style="background:#111;padding:8px 48px 44px;position:relative">
-          <div style="display:flex;align-items:baseline;justify-content:space-between;padding:30px 0 18px;border-bottom:1px solid rgba(255,255,255,.16)">
-            <span style="font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:#8a857a">The Index</span>
-            <span style="font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:#8a857a">Three pursuits</span>
-          </div>
-          <a style="display:grid;grid-template-columns:110px 1fr 40px;align-items:baseline;gap:24px;padding:28px 0;border-bottom:1px solid rgba(255,255,255,.16);text-decoration:none">
-            <span style="font-family:'Fraunces',serif;font-size:58px;line-height:.8;color:#3f8a5e">01</span>
-            <div><h3 style="margin:0 0 6px;font-family:'Fraunces',serif;font-size:40px;color:#faf8f3">Investments</h3><p style="margin:0;font-size:14px;color:#a9a499;max-width:560px">18 tech-focused angel and seed companies, led by founders we believe in.</p></div>
-            <span style="text-align:right;font-size:20px;color:#3f8a5e">→</span>
-          </a>
-          <a style="display:grid;grid-template-columns:110px 1fr 40px;align-items:baseline;gap:24px;padding:28px 0;border-bottom:1px solid rgba(255,255,255,.16);text-decoration:none">
-            <span style="font-family:'Fraunces',serif;font-size:58px;line-height:.8;color:#3f8a5e">02</span>
-            <div><h3 style="margin:0 0 6px;font-family:'Fraunces',serif;font-size:40px;color:#faf8f3">Projects</h3><p style="margin:0;font-size:14px;color:#a9a499;max-width:560px">Things we build ourselves — LinkiDink, itwyit, and more, shipped quietly.</p></div>
-            <span style="text-align:right;font-size:20px;color:#3f8a5e">→</span>
-          </a>
-          <a style="display:grid;grid-template-columns:110px 1fr 40px;align-items:baseline;gap:24px;padding:28px 0;text-decoration:none">
-            <span style="font-family:'Fraunces',serif;font-size:58px;line-height:.8;color:#3f8a5e">03</span>
-            <div><h3 style="margin:0 0 6px;font-family:'Fraunces',serif;font-size:40px;color:#faf8f3">Community</h3><p style="margin:0;font-size:14px;color:#a9a499;max-width:560px">Where we show up beyond capital — our Afrikaburn theme camp, and more.</p></div>
-            <span style="text-align:right;font-size:20px;color:#3f8a5e">→</span>
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-  <p class="dv-next">Try next: "build out the full portfolio page in the <a class="dv-oid" href="#1a">1a</a> style" · "push <a class="dv-oid" href="#1b">1b</a> warmer / show it on mobile" · "combine <a class="dv-oid" href="#1c">1c</a>'s dark index with <a class="dv-oid" href="#1a">1a</a>'s masthead" · "new directions"</p>
-</section>
-
-</x-dc>
-</body>
+        <p class="dv-next">
+          Try next: "build out the full portfolio page in the
+          <a class="dv-oid" href="#1a">1a</a> style" · "push
+          <a class="dv-oid" href="#1b">1b</a> warmer / show it on mobile" · "combine
+          <a class="dv-oid" href="#1c">1c</a>'s dark index with
+          <a class="dv-oid" href="#1a">1a</a>'s masthead" · "new directions"
+        </p>
+      </section>
+    </x-dc>
+  </body>
 </html>

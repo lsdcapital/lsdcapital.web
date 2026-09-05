@@ -1,5 +1,5 @@
-import { Link } from '@tanstack/react-router'
-import type { Project } from '~/data/projects'
+import { Link } from "@tanstack/react-router";
+import type { Project } from "~/data/projects";
 
 /**
  * The two product mocks below (LinkiDink word-ladder, itwyit match list) are
@@ -7,7 +7,7 @@ import type { Project } from '~/data/projects'
  * real product screenshots or accurate UI before shipping.
  */
 function ProjectMock({ slug }: { slug: string }) {
-  if (slug === 'linkidink') {
+  if (slug === "linkidink") {
     return (
       <div
         aria-hidden="true"
@@ -32,13 +32,13 @@ function ProjectMock({ slug }: { slug: string }) {
           ? ? ? ?
         </div>
       </div>
-    )
+    );
   }
 
-  if (slug === 'itwyit') {
-    const dot = 'w-3.5 h-3.5 rounded-full'
-    const filled = `${dot} bg-accent`
-    const empty = `${dot} border-[1.5px] border-[#d9cdb8]`
+  if (slug === "itwyit") {
+    const dot = "w-3.5 h-3.5 rounded-full";
+    const filled = `${dot} bg-accent`;
+    const empty = `${dot} border-[1.5px] border-[#d9cdb8]`;
     return (
       <div
         aria-hidden="true"
@@ -64,10 +64,10 @@ function ProjectMock({ slug }: { slug: string }) {
           <span className={filled} />
         </div>
       </div>
-    )
+    );
   }
 
-  if (slug === 'ficta') {
+  if (slug === "ficta") {
     return (
       <div
         aria-hidden="true"
@@ -85,10 +85,10 @@ function ProjectMock({ slug }: { slug: string }) {
           ⟨REDACTED_01⟩
         </div>
       </div>
-    )
+    );
   }
 
-  return null
+  return null;
 }
 
 export function ProjectCard({ project }: { project: Project }) {
@@ -106,9 +106,7 @@ export function ProjectCard({ project }: { project: Project }) {
               {project.name.slice(0, 2).toLowerCase()}
             </span>
           )}
-          <span className="font-display font-semibold text-2xl text-ink">
-            {project.name}
-          </span>
+          <span className="font-display font-semibold text-2xl text-ink">{project.name}</span>
         </div>
 
         <p className="mb-5 text-[15.5px] leading-[1.55] text-ink-muted">
@@ -118,10 +116,7 @@ export function ProjectCard({ project }: { project: Project }) {
         {project.chips && project.chips.length > 0 && (
           <div className="flex gap-2.5 text-xs text-faint">
             {project.chips.map((chip) => (
-              <span
-                key={chip}
-                className="border border-rule rounded-full px-[13px] py-[5px]"
-              >
+              <span key={chip} className="border border-rule rounded-full px-[13px] py-[5px]">
                 {chip}
               </span>
             ))}
@@ -131,5 +126,5 @@ export function ProjectCard({ project }: { project: Project }) {
 
       <ProjectMock slug={project.slug} />
     </Link>
-  )
+  );
 }

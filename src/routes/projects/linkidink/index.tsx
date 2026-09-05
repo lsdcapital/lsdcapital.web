@@ -1,24 +1,23 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/projects/linkidink/')({
+export const Route = createFileRoute("/projects/linkidink/")({
   component: LinkidinkPage,
   head: () => ({
     meta: [
-      { title: 'LinkiDink — A word connection puzzle game | LSD Capital' },
+      { title: "LinkiDink — A word connection puzzle game | LSD Capital" },
       {
-        name: 'description',
+        name: "description",
         content:
-          'LinkiDink is a word connection puzzle game inspired by NYT Connections. Solve grids by aligning words from hidden categories.',
+          "LinkiDink is a word connection puzzle game inspired by NYT Connections. Solve grids by aligning words from hidden categories.",
       },
-      { property: 'og:title', content: 'LinkiDink — A word connection puzzle game' },
+      { property: "og:title", content: "LinkiDink — A word connection puzzle game" },
       {
-        property: 'og:description',
-        content:
-          'A word connection puzzle game inspired by NYT Connections, built by LSD Capital.',
+        property: "og:description",
+        content: "A word connection puzzle game inspired by NYT Connections, built by LSD Capital.",
       },
     ],
   }),
-})
+});
 
 function LinkidinkPage() {
   return (
@@ -43,7 +42,8 @@ function LinkidinkPage() {
                 puzzle game.
               </h1>
               <p className="font-display italic text-xl md:text-2xl text-ink-muted leading-snug mt-8 max-w-xl">
-                Discover hidden categories by swapping word tiles. Inspired by NYT Connections, with 100 levels across five tiers of difficulty.
+                Discover hidden categories by swapping word tiles. Inspired by NYT Connections, with
+                100 levels across five tiers of difficulty.
               </p>
             </div>
 
@@ -70,10 +70,14 @@ function LinkidinkPage() {
             </p>
             <div className="col-span-12 md:col-span-10 grid md:grid-cols-2 gap-x-10 gap-y-8 max-w-4xl">
               <p className="text-ink leading-relaxed text-lg">
-                Each puzzle is a grid of shuffled words hiding four categories. Drag and swap tiles until each row contains words that belong together. When a row matches, it locks and collapses into a single icon tile.
+                Each puzzle is a grid of shuffled words hiding four categories. Drag and swap tiles
+                until each row contains words that belong together. When a row matches, it locks and
+                collapses into a single icon tile.
               </p>
               <p className="text-ink leading-relaxed text-lg">
-                Solve all four categories to win. Later tiers introduce cascade puzzles, where solved categories reveal new tiles, and a final bonus round connects everything together.
+                Solve all four categories to win. Later tiers introduce cascade puzzles, where
+                solved categories reveal new tiles, and a final bonus round connects everything
+                together.
               </p>
             </div>
           </div>
@@ -172,5 +176,5 @@ function LinkidinkPage() {
         </div>
       </section>
     </>
-  )
+  );
 }

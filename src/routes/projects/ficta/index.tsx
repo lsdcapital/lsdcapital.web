@@ -1,54 +1,54 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/projects/ficta/')({
+export const Route = createFileRoute("/projects/ficta/")({
   component: FictaPage,
   head: () => ({
     meta: [
-      { title: 'ficta — A local secret airlock for coding agents | LSD Capital' },
+      { title: "ficta — A local secret airlock for coding agents | LSD Capital" },
       {
-        name: 'description',
+        name: "description",
         content:
-          'ficta swaps secrets for deterministic placeholders before requests leave your machine, then restores them locally. Fails closed if a protected value would leak.',
+          "ficta swaps secrets for deterministic placeholders before requests leave your machine, then restores them locally. Fails closed if a protected value would leak.",
       },
-      { property: 'og:title', content: 'ficta — A local secret airlock for coding agents' },
+      { property: "og:title", content: "ficta — A local secret airlock for coding agents" },
       {
-        property: 'og:description',
+        property: "og:description",
         content:
-          'A local secret airlock for coding agents. Swap secrets for placeholders before requests leave your machine; restore them locally. No telemetry, MIT-licensed.',
+          "A local secret airlock for coding agents. Swap secrets for placeholders before requests leave your machine; restore them locally. No telemetry, MIT-licensed.",
       },
-      { property: 'og:image', content: 'https://lsd.capital/ficta-overview.png' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:image', content: 'https://lsd.capital/ficta-overview.png' },
+      { property: "og:image", content: "https://lsd.capital/ficta-overview.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "https://lsd.capital/ficta-overview.png" },
     ],
   }),
-})
+});
 
 const flow = [
   {
-    n: '01',
-    kind: 'Discover',
-    title: 'Find the secrets',
-    dek: 'Pulls values from .env / .env.local, Doppler, and secret-like environment variable names — the things that should never be typed into a prompt.',
+    n: "01",
+    kind: "Discover",
+    title: "Find the secrets",
+    dek: "Pulls values from .env / .env.local, Doppler, and secret-like environment variable names — the things that should never be typed into a prompt.",
   },
   {
-    n: '02',
-    kind: 'Redact',
-    title: 'Swap before it leaves',
-    dek: 'Request bodies, query strings and non-auth headers are rewritten, replacing each secret with a deterministic placeholder as traffic passes an ephemeral loopback proxy for the session.',
+    n: "02",
+    kind: "Redact",
+    title: "Swap before it leaves",
+    dek: "Request bodies, query strings and non-auth headers are rewritten, replacing each secret with a deterministic placeholder as traffic passes an ephemeral loopback proxy for the session.",
   },
   {
-    n: '03',
-    kind: 'Restore',
-    title: 'Put it back locally',
-    dek: 'Placeholders in the model’s response are swapped back to the real values on your machine, so the agent keeps working exactly as before.',
+    n: "03",
+    kind: "Restore",
+    title: "Put it back locally",
+    dek: "Placeholders in the model’s response are swapped back to the real values on your machine, so the agent keeps working exactly as before.",
   },
   {
-    n: '04',
-    kind: 'Fail closed',
-    title: 'Block on leak',
-    dek: 'If a protected value would survive redaction in a surface it should have left, ficta blocks the request rather than letting it through.',
+    n: "04",
+    kind: "Fail closed",
+    title: "Block on leak",
+    dek: "If a protected value would survive redaction in a surface it should have left, ficta blocks the request rather than letting it through.",
   },
-] as const
+] as const;
 
 function FictaPage() {
   return (
@@ -104,10 +104,14 @@ function FictaPage() {
             </p>
             <div className="col-span-12 md:col-span-10 grid md:grid-cols-2 gap-x-10 gap-y-8 max-w-4xl">
               <p className="text-ink leading-relaxed text-lg">
-                Coding agents are useful precisely because they see your project — but that means your API keys, tokens and connection strings can ride along into a request bound for a model provider. ficta sits between the agent and the provider and makes sure the real values stop at your machine.
+                Coding agents are useful precisely because they see your project — but that means
+                your API keys, tokens and connection strings can ride along into a request bound for
+                a model provider. ficta sits between the agent and the provider and makes sure the
+                real values stop at your machine.
               </p>
               <p className="text-ink leading-relaxed text-lg">
-                It’s deliberately small in scope: personal secret hygiene, not enterprise DLP, not a compliance product, not a sandbox. No telemetry, MIT-licensed, still pre-1.0 beta.
+                It’s deliberately small in scope: personal secret hygiene, not enterprise DLP, not a
+                compliance product, not a sandbox. No telemetry, MIT-licensed, still pre-1.0 beta.
               </p>
             </div>
           </div>
@@ -165,15 +169,22 @@ function FictaPage() {
             </p>
             <div className="col-span-12 md:col-span-10 grid md:grid-cols-2 gap-x-10 gap-y-8 max-w-4xl">
               <div>
-                <p className="text-[10px] uppercase tracking-[0.22em] text-ink-muted mb-3">Works with</p>
+                <p className="text-[10px] uppercase tracking-[0.22em] text-ink-muted mb-3">
+                  Works with
+                </p>
                 <p className="text-ink leading-relaxed text-lg">
-                  Verified against Claude Code, Codex and Pi. IDE clients like Cursor aren’t supported.
+                  Verified against Claude Code, Codex and Pi. IDE clients like Cursor aren’t
+                  supported.
                 </p>
               </div>
               <div>
-                <p className="text-[10px] uppercase tracking-[0.22em] text-ink-muted mb-3">Won’t catch</p>
+                <p className="text-[10px] uppercase tracking-[0.22em] text-ink-muted mb-3">
+                  Won’t catch
+                </p>
                 <p className="text-ink leading-relaxed text-lg">
-                  Encoded or split secrets, path-like tokens (unless you opt in), anything sent through tool execution, curl or MCP tools, and binary responses. It protects the request surfaces it can see — no more.
+                  Encoded or split secrets, path-like tokens (unless you opt in), anything sent
+                  through tool execution, curl or MCP tools, and binary responses. It protects the
+                  request surfaces it can see — no more.
                 </p>
               </div>
             </div>
@@ -209,7 +220,12 @@ function FictaPage() {
                   className="group inline-flex items-baseline gap-2 text-[11px] uppercase tracking-[0.24em] text-ink border-b border-ink pb-1 hover:text-accent hover:border-accent transition-colors"
                 >
                   <span>View on GitHub</span>
-                  <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">↗</span>
+                  <span
+                    aria-hidden="true"
+                    className="transition-transform group-hover:translate-x-1"
+                  >
+                    ↗
+                  </span>
                 </a>
               </div>
             </div>
@@ -232,5 +248,5 @@ function FictaPage() {
         </div>
       </section>
     </>
-  )
+  );
 }

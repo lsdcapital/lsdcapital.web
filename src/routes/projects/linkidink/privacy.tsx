@@ -1,28 +1,32 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/projects/linkidink/privacy')({
+export const Route = createFileRoute("/projects/linkidink/privacy")({
   component: LinkidinkPrivacy,
   head: () => ({
     meta: [
-      { title: 'LinkiDink Privacy Policy | LSD Capital' },
+      { title: "LinkiDink Privacy Policy | LSD Capital" },
       {
-        name: 'description',
-        content: 'Privacy policy for the LinkiDink mobile game by LSD Capital.',
+        name: "description",
+        content: "Privacy policy for the LinkiDink mobile game by LSD Capital.",
       },
-      { name: 'robots', content: 'index, follow' },
+      { name: "robots", content: "index, follow" },
     ],
   }),
-})
+});
 
-const LAST_UPDATED = '30 June 2026'
+const LAST_UPDATED = "30 June 2026";
 
 const sections: { title: string; body: React.ReactNode }[] = [
   {
-    title: 'Who we are',
+    title: "Who we are",
     body: (
       <p>
-        LinkiDink is a mobile game published by LSD Capital. References to "we", "us", and "our" mean LSD Capital. You can reach us at{' '}
-        <a href="mailto:hello@lsd.capital" className="text-accent border-b border-accent/40 hover:border-accent">
+        LinkiDink is a mobile game published by LSD Capital. References to "we", "us", and "our"
+        mean LSD Capital. You can reach us at{" "}
+        <a
+          href="mailto:hello@lsd.capital"
+          className="text-accent border-b border-accent/40 hover:border-accent"
+        >
           hello@lsd.capital
         </a>
         .
@@ -30,35 +34,41 @@ const sections: { title: string; body: React.ReactNode }[] = [
     ),
   },
   {
-    title: 'Data we collect',
+    title: "Data we collect",
     body: (
       <>
         <p>
-          LinkiDink is designed to be played anonymously. We do not ask for your name, email address, phone number, or any account credentials.
+          LinkiDink is designed to be played anonymously. We do not ask for your name, email
+          address, phone number, or any account credentials.
         </p>
         <ul className="mt-4 space-y-3 border-l border-rule pl-5">
           <li>
-            <strong className="font-display font-medium text-ink">Anonymous device identifier —</strong>{' '}
-            a randomly generated ID stored on your device, used to save your progress and associate it with the app installation. This is not linked to your name, email, or other personal data.
+            <strong className="font-display font-medium text-ink">
+              Anonymous device identifier —
+            </strong>{" "}
+            a randomly generated ID stored on your device, used to save your progress and associate
+            it with the app installation. This is not linked to your name, email, or other personal
+            data.
           </li>
           <li>
-            <strong className="font-display font-medium text-ink">Display name (nickname) —</strong>{' '}
+            <strong className="font-display font-medium text-ink">Display name (nickname) —</strong>{" "}
             a nickname that you choose. You can change it at any time.
           </li>
           <li>
-            <strong className="font-display font-medium text-ink">Game progress —</strong>{' '}
-            such as your current level and hint coins, saved so you can resume play.
+            <strong className="font-display font-medium text-ink">Game progress —</strong> such as
+            your current level and hint coins, saved so you can resume play.
           </li>
           <li>
-            <strong className="font-display font-medium text-ink">Optional feedback —</strong>{' '}
-            when you tap "report" on a puzzle, we record that report along with any text comment you choose to add.
+            <strong className="font-display font-medium text-ink">Optional feedback —</strong> when
+            you tap "report" on a puzzle, we record that report along with any text comment you
+            choose to add.
           </li>
         </ul>
       </>
     ),
   },
   {
-    title: 'How we use your data',
+    title: "How we use your data",
     body: (
       <>
         <p>We use the data described above only to:</p>
@@ -68,20 +78,26 @@ const sections: { title: string; body: React.ReactNode }[] = [
           <li>Improve gameplay and balance difficulty across the level pool.</li>
         </ul>
         <p className="mt-5">
-          We do <strong className="font-display font-medium text-ink">not</strong> sell your data, use it for advertising, or track you across other apps or websites. The app contains no third-party advertising or analytics trackers. We do not share your data with third parties except as described in the next section.
+          We do <strong className="font-display font-medium text-ink">not</strong> sell your data,
+          use it for advertising, or track you across other apps or websites. The app contains no
+          third-party advertising or analytics trackers. We do not share your data with third
+          parties except as described in the next section.
         </p>
       </>
     ),
   },
   {
-    title: 'Third-party services',
+    title: "Third-party services",
     body: (
       <>
         <p>LinkiDink uses the following third-party services to operate:</p>
         <ul className="mt-4 space-y-3 border-l border-rule pl-5">
           <li>
-            <strong className="font-display font-medium text-ink">Expo and Expo Application Services —</strong>{' '}
-            used to build, distribute, and update the app. Expo processes basic device and runtime information to deliver app updates. See{' '}
+            <strong className="font-display font-medium text-ink">
+              Expo and Expo Application Services —
+            </strong>{" "}
+            used to build, distribute, and update the app. Expo processes basic device and runtime
+            information to deliver app updates. See{" "}
             <a
               href="https://expo.dev/privacy"
               target="_blank"
@@ -93,8 +109,9 @@ const sections: { title: string; body: React.ReactNode }[] = [
             .
           </li>
           <li>
-            <strong className="font-display font-medium text-ink">Convex —</strong>{' '}
-            used as our backend to store your anonymous identifier, nickname, game progress, and any report feedback, solely to run the game and prove puzzle quality. See{' '}
+            <strong className="font-display font-medium text-ink">Convex —</strong> used as our
+            backend to store your anonymous identifier, nickname, game progress, and any report
+            feedback, solely to run the game and prove puzzle quality. See{" "}
             <a
               href="https://www.convex.dev/legal/privacy"
               target="_blank"
@@ -106,47 +123,65 @@ const sections: { title: string; body: React.ReactNode }[] = [
             .
           </li>
           <li>
-            <strong className="font-display font-medium text-ink">Apple App Store and Google Play Store —</strong>{' '}
-            used to distribute the app. Apple and Google may collect their own data when you download or use the app; see their respective privacy policies.
+            <strong className="font-display font-medium text-ink">
+              Apple App Store and Google Play Store —
+            </strong>{" "}
+            used to distribute the app. Apple and Google may collect their own data when you
+            download or use the app; see their respective privacy policies.
           </li>
         </ul>
       </>
     ),
   },
   {
-    title: 'Children',
+    title: "Children",
     body: (
       <p>
-        LinkiDink is suitable for general audiences. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, contact us and we will delete it.
+        LinkiDink is suitable for general audiences. We do not knowingly collect personal
+        information from children under 13. If you believe a child has provided us with personal
+        information, contact us and we will delete it.
       </p>
     ),
   },
   {
-    title: 'Data retention and deletion',
+    title: "Data retention and deletion",
     body: (
       <p>
-        Your progress, nickname, and any feedback are retained for as long as the app is installed on your device. To delete your data, uninstall the app — local data is removed automatically. To delete cloud-stored data associated with your anonymous identifier, email{' '}
-        <a href="mailto:hello@lsd.capital" className="text-accent border-b border-accent/40 hover:border-accent">
+        Your progress, nickname, and any feedback are retained for as long as the app is installed
+        on your device. To delete your data, uninstall the app — local data is removed
+        automatically. To delete cloud-stored data associated with your anonymous identifier, email{" "}
+        <a
+          href="mailto:hello@lsd.capital"
+          className="text-accent border-b border-accent/40 hover:border-accent"
+        >
           hello@lsd.capital
-        </a>{' '}
+        </a>{" "}
         with your device identifier and we will remove it within 30 days.
       </p>
     ),
   },
   {
-    title: 'Security',
+    title: "Security",
     body: (
       <p>
-        We use industry-standard encryption in transit (HTTPS / TLS) when data is sent to our third-party providers. No system is perfectly secure; we will notify affected users in the event of a breach involving personal data.
+        We use industry-standard encryption in transit (HTTPS / TLS) when data is sent to our
+        third-party providers. No system is perfectly secure; we will notify affected users in the
+        event of a breach involving personal data.
       </p>
     ),
   },
   {
-    title: 'Your rights',
+    title: "Your rights",
     body: (
       <p>
-        Depending on your jurisdiction (including GDPR and POPIA in South Africa), you may have rights to access, correct, or delete personal data we hold about you. Because LinkiDink collects only anonymous game data, in most cases there is no personal data to access — but if you believe we hold data about you, email{' '}
-        <a href="mailto:hello@lsd.capital" className="text-accent border-b border-accent/40 hover:border-accent">
+        Depending on your jurisdiction (including GDPR and POPIA in South Africa), you may have
+        rights to access, correct, or delete personal data we hold about you. Because LinkiDink
+        collects only anonymous game data, in most cases there is no personal data to access — but
+        if you believe we hold data about you, email{" "}
+        <a
+          href="mailto:hello@lsd.capital"
+          className="text-accent border-b border-accent/40 hover:border-accent"
+        >
           hello@lsd.capital
         </a>
         .
@@ -154,25 +189,29 @@ const sections: { title: string; body: React.ReactNode }[] = [
     ),
   },
   {
-    title: 'Changes to this policy',
+    title: "Changes to this policy",
     body: (
       <p>
-        We will post any changes to this policy on this page and update the "Last updated" date above. Material changes will be highlighted in the app on next launch.
+        We will post any changes to this policy on this page and update the "Last updated" date
+        above. Material changes will be highlighted in the app on next launch.
       </p>
     ),
   },
   {
-    title: 'Contact',
+    title: "Contact",
     body: (
       <p>
-        Questions about this policy or how we handle your data?{' '}
-        <a href="mailto:hello@lsd.capital" className="text-accent border-b border-accent/40 hover:border-accent">
+        Questions about this policy or how we handle your data?{" "}
+        <a
+          href="mailto:hello@lsd.capital"
+          className="text-accent border-b border-accent/40 hover:border-accent"
+        >
           hello@lsd.capital
         </a>
       </p>
     ),
   },
-]
+];
 
 function LinkidinkPrivacy() {
   return (
@@ -203,7 +242,7 @@ function LinkidinkPrivacy() {
                 >
                   <div className="grid grid-cols-12 gap-x-4 mb-5">
                     <span className="col-span-2 md:col-span-1 font-display text-2xl text-ink-muted tabular-nums leading-none pt-1">
-                      {String(i + 1).padStart(2, '0')}
+                      {String(i + 1).padStart(2, "0")}
                     </span>
                     <h2 className="col-span-10 md:col-span-11 font-display text-2xl md:text-3xl text-ink leading-tight">
                       {section.title}
@@ -226,5 +265,5 @@ function LinkidinkPrivacy() {
         </div>
       </section>
     </article>
-  )
+  );
 }

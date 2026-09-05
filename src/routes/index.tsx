@@ -1,23 +1,23 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
-import { Hero } from '~/components/Hero'
-import { ProjectCard } from '~/components/ProjectCard'
-import { HeartMark } from '~/components/HeartMark'
-import { projects } from '~/data/projects'
-import { portfolio } from '~/data/portfolio'
-import { community } from '~/data/community'
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Hero } from "~/components/Hero";
+import { ProjectCard } from "~/components/ProjectCard";
+import { HeartMark } from "~/components/HeartMark";
+import { projects } from "~/data/projects";
+import { portfolio } from "~/data/portfolio";
+import { community } from "~/data/community";
 
-export const Route = createFileRoute('/')({ component: Home })
+export const Route = createFileRoute("/")({ component: Home });
 
 // Curated handful for the homepage logo strip — all backed by local /public svgs.
-const featuredNames = ['Dope', 'WeR1', 'DIDX', 'Inv.es', 'Frsh Minds']
+const featuredNames = ["Dope", "WeR1", "DIDX", "Inv.es", "Frsh Minds"];
 const featured = featuredNames
   .map((name) => portfolio.find((company) => company.name === name))
-  .filter((company): company is (typeof portfolio)[number] => Boolean(company))
+  .filter((company): company is (typeof portfolio)[number] => Boolean(company));
 
-const container = 'max-w-[1180px] mx-auto px-[clamp(20px,5vw,46px)]'
+const container = "max-w-[1180px] mx-auto px-[clamp(20px,5vw,46px)]";
 
 function Home() {
-  const camp = community[0]
+  const camp = community[0];
 
   return (
     <>
@@ -48,8 +48,7 @@ function Home() {
             <span className="text-sm text-faint">18 founders · Africa &amp; beyond</span>
           </div>
           <p className="mb-[30px] max-w-[560px] text-base leading-[1.55] text-ink-muted">
-            Tech-focused angel and seed companies, led by founders we genuinely
-            believe in.
+            Tech-focused angel and seed companies, led by founders we genuinely believe in.
           </p>
           <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-[clamp(20px,4vw,44px)] items-center border-t border-b border-rule py-7">
             {featured.map((company) => (
@@ -77,16 +76,13 @@ function Home() {
       >
         <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-[clamp(24px,4vw,48px)] items-center border-t border-rule pt-[clamp(32px,4vw,52px)]">
           <div>
-            <span className="text-[13px] tracking-[0.04em] text-faint">
-              Where we show up
-            </span>
+            <span className="text-[13px] tracking-[0.04em] text-faint">Where we show up</span>
             <h2 className="mt-2 mb-4 font-display font-semibold text-[clamp(28px,4vw,42px)] leading-[1.05] text-ink">
               Beyond capital.
             </h2>
             <p className="mb-6 max-w-[460px] text-[16.5px] leading-[1.6] text-ink-muted">
-              We run a theme camp at Afrikaburn — the South African regional
-              Burning Man — and help bring it to life each year. It's where a lot
-              of the heart comes from.
+              We run a theme camp at Afrikaburn — the South African regional Burning Man — and help
+              bring it to life each year. It's where a lot of the heart comes from.
             </p>
             <a
               href={camp.url}
@@ -116,8 +112,8 @@ function Home() {
             In for the long middle.
           </h2>
           <p className="mt-6 max-w-[520px] text-[clamp(16px,2vw,19px)] leading-[1.6] text-[#efe4d0]">
-            Not the pitch and not the exit — the years in between, building the
-            things we believe in and backing the people doing the same.
+            Not the pitch and not the exit — the years in between, building the things we believe in
+            and backing the people doing the same.
           </p>
           <a
             href="mailto:hello@lsd.capital"
@@ -128,5 +124,5 @@ function Home() {
         </div>
       </section>
     </>
-  )
+  );
 }

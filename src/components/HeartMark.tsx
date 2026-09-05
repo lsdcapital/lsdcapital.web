@@ -1,7 +1,7 @@
 type HeartMarkProps = {
-  className?: string
-  strokeWidth?: number
-}
+  className?: string;
+  strokeWidth?: number;
+};
 
 export function HeartMark({ className, strokeWidth = 1.4 }: HeartMarkProps) {
   return (
@@ -20,5 +20,5 @@ export function HeartMark({ className, strokeWidth = 1.4 }: HeartMarkProps) {
         strokeLinejoin="round"
       />
     </svg>
-  )
+  );
 }

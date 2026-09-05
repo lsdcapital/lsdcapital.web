@@ -9,13 +9,13 @@ export function Hero() {
       </p>
 
       <h1 className="mt-5 font-display font-semibold text-ink max-w-[980px] text-[clamp(40px,6.4vw,80px)] leading-[1] tracking-[-0.035em]">
-        We build the things we wish existed —{' '}
+        We build the things we wish existed —{" "}
         <span className="text-accent">and back the people building the rest.</span>
       </h1>
 
       <p className="mt-7 max-w-[600px] text-[clamp(17px,2vw,20px)] leading-[1.55] text-ink-muted">
-        Some weeks we ship. Some weeks we invest. It's all the same instinct:
-        heart-led, hands-on, in for the long middle.
+        Some weeks we ship. Some weeks we invest. It's all the same instinct: heart-led, hands-on,
+        in for the long middle.
       </p>
 
       <div className="mt-10 flex flex-wrap items-center gap-[22px]">
@@ -25,10 +25,8 @@ export function Hero() {
         >
           Start a conversation
         </a>
-        <span className="text-[15px] text-faint">
-          or just write — hello@lsd.capital
-        </span>
+        <span className="text-[15px] text-faint">or just write — hello@lsd.capital</span>
       </div>
     </header>
-  )
+  );
 }
