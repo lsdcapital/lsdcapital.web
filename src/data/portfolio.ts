@@ -23,7 +23,7 @@ export const portfolio: PortfolioCompany[] = [
   {
     name: "Active Aligners",
     url: "https://activealigners.com",
-    logo: "https://www.activealigners.com/wp-content/themes/yootheme/cache/d8/ACTIVE-ALIGNERS-1-d85080d4.png",
+    logo: "/active-aligners-logo.png",
     bg: "white",
   },
   {

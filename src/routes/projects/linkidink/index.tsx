@@ -90,20 +90,20 @@ function LinkidinkPage() {
             <p className="col-span-12 md:col-span-2 text-[10px] uppercase tracking-[0.24em] text-ink-muted">
               Chapter II
               <br />
-              <span className="text-ink-muted/70">Try the beta</span>
+              <span className="text-ink-muted/70">Get the app</span>
             </p>
             <div className="col-span-12 md:col-span-10 max-w-3xl">
               <h2 className="font-display text-4xl md:text-5xl text-ink leading-tight">
-                Out now in <em className="italic text-accent">beta.</em>
+                Out <em className="italic text-accent">now.</em>
               </h2>
               <p className="font-display italic text-xl text-ink-muted mt-4 max-w-xl">
-                Quietly shipped to TestFlight and Google Play.
+                On the App Store and Google Play.
               </p>
 
               <ul className="mt-10 border-t border-ink">
                 <li className="border-b border-rule">
                   <a
-                    href="https://testflight.apple.com/join/JH1EMcxN"
+                    href="https://apps.apple.com/app/linkidink/id6769058659"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group grid grid-cols-12 gap-x-4 items-baseline py-6 transition-colors hover:bg-ink/[0.025]"
@@ -115,7 +115,7 @@ function LinkidinkPage() {
                       iOS
                     </span>
                     <span className="col-span-5 md:col-span-7 font-display text-2xl md:text-3xl text-ink">
-                      TestFlight
+                      App Store
                     </span>
                     <span
                       aria-hidden="true"
@@ -127,7 +127,7 @@ function LinkidinkPage() {
                 </li>
                 <li className="border-b border-rule">
                   <a
-                    href="https://play.google.com/apps/testing/capital.lsd.linkidink"
+                    href="https://play.google.com/store/apps/details?id=capital.lsd.linkidink"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group grid grid-cols-12 gap-x-4 items-baseline py-6 transition-colors hover:bg-ink/[0.025]"

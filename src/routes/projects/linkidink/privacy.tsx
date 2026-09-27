@@ -14,7 +14,7 @@ export const Route = createFileRoute("/projects/linkidink/privacy")({
   }),
 });
 
-const LAST_UPDATED = "30 June 2026";
+const LAST_UPDATED = "27 September 2026";
 
 const sections: { title: string; body: React.ReactNode }[] = [
   {
@@ -74,7 +74,7 @@ const sections: { title: string; body: React.ReactNode }[] = [
         <p>We use the data described above only to:</p>
         <ul className="mt-4 space-y-2 border-l border-rule pl-5">
           <li>Provide the game and save your progress between sessions.</li>
-          <li>Review reported puzzles and prove puzzle quality.</li>
+          <li>Review reported puzzles and improve puzzle quality.</li>
           <li>Improve gameplay and balance difficulty across the level pool.</li>
         </ul>
         <p className="mt-5">
@@ -111,7 +111,7 @@ const sections: { title: string; body: React.ReactNode }[] = [
           <li>
             <strong className="font-display font-medium text-ink">Convex —</strong> used as our
             backend to store your anonymous identifier, nickname, game progress, and any report
-            feedback, solely to run the game and prove puzzle quality. See{" "}
+            feedback, solely to run the game and improve puzzle quality. See{" "}
             <a
               href="https://www.convex.dev/legal/privacy"
               target="_blank"
@@ -147,9 +147,9 @@ const sections: { title: string; body: React.ReactNode }[] = [
     title: "Data retention and deletion",
     body: (
       <p>
-        Your progress, nickname, and any feedback are retained for as long as the app is installed
-        on your device. To delete your data, uninstall the app — local data is removed
-        automatically. To delete cloud-stored data associated with your anonymous identifier, email{" "}
+        Your progress, nickname, and any feedback are stored on your device and, linked to your
+        anonymous identifier, in our backend. Uninstalling the app removes the copy on your device.
+        The cloud-stored copy is kept until you ask us to delete it — to do so, email{" "}
         <a
           href="mailto:hello@lsd.capital"
           className="text-accent border-b border-accent/40 hover:border-accent"
