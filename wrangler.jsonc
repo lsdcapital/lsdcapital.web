@@ -7,6 +7,14 @@
   "main": "@tanstack/react-start/server-entry",
   "workers_dev": false,
   "preview_urls": false,
+  // Pages are prerendered to <path>/index.html. The default
+  // "auto-trailing-slash" then 307s /portfolio -> /portfolio/, which Google
+  // reports as "Page with redirect" for every sitemap URL. Serve the
+  // slashless path directly (matching our links and sitemap) and redirect
+  // the slashed form to it instead.
+  "assets": {
+    "html_handling": "drop-trailing-slash",
+  },
   // No "routes" here on purpose. Terraform owns the lsd.capital custom domain
   // (lsdcapital/cloudflare in the lsdcapital/tf repo); Wrangler only publishes
   // code. Declaring the hostname in both places makes every deploy re-assert it
