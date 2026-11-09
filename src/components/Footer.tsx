@@ -7,6 +7,8 @@ const exploreLinks = [
   { hash: "community", label: "Community" },
 ] as const;
 
+const year = new Date().getFullYear();
+
 export function Footer() {
   return (
     <footer className="bg-paper border-t border-rule relative z-10">
@@ -66,7 +68,7 @@ export function Footer() {
 
       <div className="border-t border-rule">
         <div className="max-w-[1180px] mx-auto px-[clamp(20px,5vw,46px)] py-[18px] flex flex-wrap justify-between gap-2 text-[13px] text-faint">
-          <span>© {new Date().getFullYear()} LSD Capital</span>
+          <span>© {year} LSD Capital</span>
           <span>Heart-led investments.</span>
         </div>
       </div>
