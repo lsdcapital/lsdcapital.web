@@ -166,6 +166,12 @@ function LinkidinkPage() {
                 Privacy policy →
               </Link>
               <Link
+                to="/projects/linkidink/terms"
+                className="text-[11px] uppercase tracking-[0.22em] text-ink-muted hover:text-ink transition-colors border-b border-rule pb-1"
+              >
+                Terms of service →
+              </Link>
+              <Link
                 to="/projects"
                 className="text-[11px] uppercase tracking-[0.22em] text-ink-muted hover:text-ink transition-colors"
               >
